@@ -2,7 +2,7 @@ process.mixin(require('sys'));
 require.paths.unshift('spec', '/Users/scotttaylor/.rvm/gems/ruby/1.8.6/gems/jspec-3.2.1/lib', 'lib');
 require('jspec');
 require('unit/spec.helper');
-require('yourlib');
+require('node_debugger');
 
 quit = process.exit;
 print = puts;
