@@ -6,10 +6,15 @@ describe('NodeDebugger', function() {
         setEncoding: function() {}
       };
 
+      command_center = {
+        loop: function() {}
+      };
+
       node_debugger = Object.create(NodeDebugger);
       node_debugger.print = function() {};
       node_debugger.puts  = function() {};
       node_debugger.tcp = tcp;
+      node_debugger.commandCenter = command_center;
     });
 
     describe("starting", function() {
@@ -30,7 +35,7 @@ describe('NodeDebugger', function() {
       });
 
       it("should establish the connection on port 5858", function() {
-        port_received = null;
+        var port_received = null;
 
         node_debugger.tcp.createConnection = function(port) {
           port_received = port;
@@ -41,7 +46,7 @@ describe('NodeDebugger', function() {
       });
 
       it("should establish the connection on the correct port", function() {
-        port_received = null;
+        var port_received = null;
 
         node_debugger.port = 6000;
 
@@ -54,7 +59,7 @@ describe('NodeDebugger', function() {
       });
 
       it("should speak in ascii", function() {
-        encoding_received = null;
+        var encoding_received = null;
 
         tcp.setEncoding = function(encoding) {
           encoding_received = encoding;
@@ -62,6 +67,30 @@ describe('NodeDebugger', function() {
 
         node_debugger.start();
         encoding_received.should.equal("ascii");
+      });
+
+      it("should set the command center's connection", function() {
+        var connection = {};
+
+        tcp.createConnection = function() {
+          return connection;
+        };
+
+        node_debugger.start();
+
+        command_center.connection.should.equal(connection);
+      });
+
+      it("should call the commandCenter's loop method", function() {
+        var loop_called = false;
+
+        command_center.loop = function() {
+          loop_called = true;
+        };
+
+        node_debugger.start();
+
+        loop_called.should.be(true);
       });
     });
   });
