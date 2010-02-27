@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+var sys = require('sys');
+
+require.paths.unshift(__dirname + "/../lib");
+require("node_debugger");
+
+NodeDebugger.start();
