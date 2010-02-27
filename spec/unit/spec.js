@@ -2,7 +2,8 @@ describe('NodeDebugger', function() {
   describe('Client', function() {
     before_each(function() {
       connection = {
-        setEncoding: function() {}
+        setEncoding: function() {},
+        addListener: function() {}
       };
 
       tcp = {
@@ -92,6 +93,17 @@ describe('NodeDebugger', function() {
         node_debugger.start();
 
         loop_called.should.be(true);
+      });
+
+      it("should install the connection's event listener", function() {
+        var called = false;
+
+        connection.addListener = function() {
+          called = true;
+        };
+
+        node_debugger.start();
+        called.should.be(true);
       });
     });
   });
