@@ -25,18 +25,6 @@ describe('NodeDebugger', function() {
         text.search(/welcome to the node debugger!/).should.not.equal(-1);
       });
 
-      it("should output the repl text", function() {
-        var text = "";
-
-        node_debugger.print = function(t) {
-          text += t;
-        };
-
-        node_debugger.start();
-
-        text.search(/ndb\> /).should.not.equal(-1);
-      });
-
       it("should have the default port as 5858", function() {
         node_debugger.port.should.equal(5858);
       });
