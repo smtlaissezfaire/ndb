@@ -42,7 +42,7 @@
   rw / raw_write
     rw <json>
   version
-    display this version, v8 version, node version?
+    display this version, v8 version, node version (process.version)?
   e / eval
     eval <expr>
     print
