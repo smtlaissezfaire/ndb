@@ -1,9 +1,14 @@
 describe('NodeDebugger', function() {
   describe('Client', function() {
     before_each(function() {
-      tcp = {
-        createConnection: function() {},
+      connection = {
         setEncoding: function() {}
+      };
+
+      tcp = {
+        createConnection: function() {
+          return connection;
+        }
       };
 
       command_center = {
@@ -11,9 +16,9 @@ describe('NodeDebugger', function() {
       };
 
       node_debugger = Object.create(NodeDebugger);
-      node_debugger.print = function() {};
-      node_debugger.puts  = function() {};
-      node_debugger.tcp = tcp;
+      node_debugger.print         = function() {};
+      node_debugger.puts          = function() {};
+      node_debugger.tcp           = tcp;
       node_debugger.commandCenter = command_center;
     });
 
@@ -37,8 +42,9 @@ describe('NodeDebugger', function() {
       it("should establish the connection on port 5858", function() {
         var port_received = null;
 
-        node_debugger.tcp.createConnection = function(port) {
+        tcp.createConnection = function(port) {
           port_received = port;
+          return connection;
         };
 
         node_debugger.start();
@@ -52,6 +58,7 @@ describe('NodeDebugger', function() {
 
         node_debugger.tcp.createConnection = function(port) {
           port_received = port;
+          return connection;
         };
 
         node_debugger.start();
@@ -61,7 +68,7 @@ describe('NodeDebugger', function() {
       it("should speak in ascii", function() {
         var encoding_received = null;
 
-        tcp.setEncoding = function(encoding) {
+        connection.setEncoding = function(encoding) {
           encoding_received = encoding;
         };
 
@@ -70,12 +77,6 @@ describe('NodeDebugger', function() {
       });
 
       it("should set the command center's connection", function() {
-        var connection = {};
-
-        tcp.createConnection = function() {
-          return connection;
-        };
-
         node_debugger.start();
 
         command_center.connection.should.equal(connection);
