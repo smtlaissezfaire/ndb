@@ -45,6 +45,8 @@
     display this version, v8 version, node version?
   e / eval
     eval <expr>
+    print
+    set
   bt / backtrace
 
   sc / scope
