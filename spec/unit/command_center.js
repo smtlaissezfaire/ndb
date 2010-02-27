@@ -86,17 +86,6 @@ describe("NodeDebugger", function() {
         command_center.loop();
         opened.should.be(true);
       });
-
-      it("should add the listener", function() {
-        var args = null;
-
-        mock_stdio.addListener = function() {
-          args = Array.prototype.slice.call(arguments);
-        };
-
-        command_center.loop();
-        args.toString().should.equal(["data", command_center.stdinListener].toString());
-      });
     });
 
     describe("stdinListener", function() {
