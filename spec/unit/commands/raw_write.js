@@ -43,7 +43,7 @@ describe("NodeDebugger", function() {
 
         commands.raw_write("{foo: bar}");
 
-        text.should.match(/Content-Length: 10\r\n\r\n\{foo\: bar\}\n/);
+        text.should.match(/Content-Length: 11\r\n\r\n\{foo\: bar\}\n/);
       });
 
       it("should output the correct content length", function() {
@@ -52,7 +52,7 @@ describe("NodeDebugger", function() {
 
         commands.raw_write("{a: b}");
 
-        text.should.match(/Content-Length: 6\r/);
+        text.should.match(/Content-Length: 7\r/);
       });
     });
   });
