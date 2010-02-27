@@ -109,7 +109,18 @@ describe("NodeDebugger", function() {
 
         command_center.stdinListener("rw {}");
         called_with.should.equal("{}");
-      })
+      });
+
+      it("should call the prompt when done", function() {
+        prompt_called = false;
+
+        command_center.prompt = function() {
+          prompt_called = true;
+        };
+
+        command_center.stdinListener("asdfsd");
+        prompt_called.should.be(true);
+      });
     });
   });
 });
