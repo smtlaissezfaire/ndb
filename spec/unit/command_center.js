@@ -45,6 +45,14 @@ describe("NodeDebugger", function() {
       it("should output the help command if it doesn't parse another command", function() {
         command_center.parse("asdfasdfasdfas").toString().should.equal([NodeDebugger.Commands.Help].toString());
       });
+
+      it("should parse 'continue' as a continue command", function() {
+        command_center.parse("continue")[0].should.equal(NodeDebugger.Commands.Continue);
+      });
+
+      it("should parse 'c' as a c command", function() {
+        command_center.parse("c")[0].should.equal(NodeDebugger.Commands.Continue);
+      });
     });
 
     describe("loop", function() {

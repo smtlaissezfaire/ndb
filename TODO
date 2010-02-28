@@ -20,7 +20,7 @@
 [ ]   l <num>
 [ ]   list breakpoints
 [ ]   list watchpoints
-[ ] c / continue
+[x] c / continue
 [ ] b / break
 [ ]   (with no args)
 [ ]   filaname:num
