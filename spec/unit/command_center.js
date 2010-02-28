@@ -85,8 +85,10 @@ describe("NodeDebugger", function() {
       it("should call the function if parsed correctly", function() {
         var called = false;
 
-        command_center.commands.raw_write = function() {
-          called = true;
+        command_center.commands.raw_write = {
+          run: function() {
+            called = true;
+          }
         };
 
         command_center.stdinListener("rw {}");
@@ -96,8 +98,10 @@ describe("NodeDebugger", function() {
       it("should call the function with arguments", function() {
         var called_with = undefined;
 
-        command_center.commands.raw_write = function(arg) {
-          called_with = arg;
+        command_center.commands.raw_write = {
+          run: function(arg) {
+            called_with = arg;
+          }
         };
 
         command_center.stdinListener("rw {}");
