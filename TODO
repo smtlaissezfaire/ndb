@@ -11,7 +11,7 @@
     --help
 
 -- commands:
-  h / help
+x h / help
   h command
   l / list
     l

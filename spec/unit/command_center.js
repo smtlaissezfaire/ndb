@@ -34,19 +34,20 @@ describe("NodeDebugger", function() {
         command_center.parse("rw {foo: bar}").toString().should.equal([NodeDebugger.Commands.raw_write, "{foo: bar}"].toString());
       });
 
-      it("should not return the raw_write command when matching rw at the end of the string", function() {
-        command_center.parse("foo rw");
-        out.should.equal("unknown command: foo rw");
+      it("should return the help command for 'help'", function() {
+        command_center.parse("help").toString().should.equal([NodeDebugger.Commands.Help].toString());
       });
 
-      it("should see anything else as an error", function() {
-        command_center.parse("foo");
-        out.should.equal("unknown command: foo");
+      it("should return the help command for 'h'", function() {
+        command_center.parse("h").toString().should.equal([NodeDebugger.Commands.Help].toString());
       });
 
-      it("should output the correct error", function() {
-        command_center.parse("bar");
-        out.should.equal("unknown command: bar");
+      it("should trim a command", function() {
+        command_center.parse("   h   ").toString().should.equal([NodeDebugger.Commands.Help].toString());
+      });
+
+      it("should output the help command if it doesn't parse another command", function() {
+        command_center.parse("asdfasdfasdfas").toString().should.equal([NodeDebugger.Commands.Help].toString());
       });
     });
 
