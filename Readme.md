@@ -1,13 +1,16 @@
 
-# YourLib
+# ndb - the node debugger
 
-Description
+This is still in super-alpha.  I wouldn't try to use it for anything at all
+unless you enjoy feeling the pain of writing in the v8 debugger protocol:
+
+  http://code.google.com/p/v8/wiki/DebuggerProtocol
 
 ## License 
 
 (The MIT License)
 
-Copyright (c) 2009 Your Name &lt;Your Email&gt;
+Copyright (c) 2009 Scott Taylor &lt;scott@railsnewbie.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
