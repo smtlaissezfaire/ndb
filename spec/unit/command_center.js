@@ -43,7 +43,15 @@ describe("NodeDebugger", function() {
       });
 
       it("should trim a command", function() {
-        command_center.parse("   h   ").toString().should.equal([NodeDebugger.Commands.Help].toString());
+        command_center.parse("      rw {foo: bar}         ").toString().should.equal([NodeDebugger.Commands.raw_write, "{foo: bar}"].toString());
+      });
+
+      it("should parse l as a list command", function() {
+        command_center.parse("l")[0].should.equal(NodeDebugger.Commands.List);
+      });
+
+      it("should parse 'list' as a list command", function() {
+        command_center.parse("list")[0].should.equal(NodeDebugger.Commands.List);
       });
 
       it("should output the help command if it doesn't parse another command", function() {

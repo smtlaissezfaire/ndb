@@ -10,5 +10,6 @@ JSpec
   .exec('spec/unit/event_listener.js')
   .exec('spec/unit/commands/raw_write.js')
   .exec('spec/unit/commands/help.js')
+  .exec('spec/unit/commands/list.js')
   .run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' })
   .report();
