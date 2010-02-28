@@ -2,7 +2,6 @@ describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
       event_listner = Object.create(NodeDebugger.EventListener);
-      event_listner.puts = function() {};
     });
 
     it("should be in verbose mode by default", function() {
@@ -12,7 +11,7 @@ describe("NodeDebugger", function() {
     it("should output the data received in verbose mode", function() {
       var text = "";
 
-      event_listner.puts = function(t) {
+      NodeDebugger.Helpers.puts = function(t) {
         text += t;
       };
 

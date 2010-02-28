@@ -3,7 +3,6 @@ require('jspec');
 require('unit/spec.helper');
 
 require.paths.unshift("./../lib");
-NodeDebugger = require("node_debugger");
 
 JSpec
   .exec('spec/unit/spec.js')

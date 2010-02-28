@@ -1,21 +1,14 @@
 describe("NodeDebugger", function() {
   describe("CommandCenter", function() {
     before_each(function() {
-      mock_stdio = {
-        open: function() {},
-        addListener: function() {}
-      };
-
       command_center = Object.create(NodeDebugger.CommandCenter);
-      command_center.stdio = mock_stdio;
-      command_center.print = function() {};
       command_center.commands = Object.create(NodeDebugger.Commands);
     });
 
     it("should output the repl text", function() {
       var text = "";
 
-      command_center.print = function(t) {
+      NodeDebugger.Helpers.print = function(t) {
         text += t;
       };
 
@@ -28,7 +21,7 @@ describe("NodeDebugger", function() {
       before_each(function() {
         out = "";
 
-        command_center.puts = function(t) {
+        NodeDebugger.Helpers.puts = function(t) {
           out += t;
         };
       });

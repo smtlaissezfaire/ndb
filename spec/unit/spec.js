@@ -1,25 +1,11 @@
 describe('NodeDebugger', function() {
   describe('Client', function() {
     before_each(function() {
-      connection = {
-        setEncoding: function() {},
-        addListener: function() {}
-      };
-
-      tcp = {
-        createConnection: function() {
-          return connection;
-        }
-      };
-
       command_center = {
         loop: function() {}
       };
 
       node_debugger = Object.create(NodeDebugger);
-      node_debugger.print         = function() {};
-      node_debugger.puts          = function() {};
-      node_debugger.tcp           = tcp;
       node_debugger.commandCenter = command_center;
     });
 
@@ -27,7 +13,7 @@ describe('NodeDebugger', function() {
       it("should output welcome text", function() {
         var text = "";
 
-        node_debugger.puts = function(t) {
+        node_debugger.Helpers.puts = function(t) {
           text += t;
         };
 
@@ -57,7 +43,7 @@ describe('NodeDebugger', function() {
 
         node_debugger.port = 6000;
 
-        node_debugger.tcp.createConnection = function(port) {
+        tcp.createConnection = function(port) {
           port_received = port;
           return connection;
         };
