@@ -5,18 +5,6 @@ describe("NodeDebugger", function() {
       command_center.commands = Object.create(NodeDebugger.Commands);
     });
 
-    it("should output the repl text", function() {
-      var text = "";
-
-      NodeDebugger.Helpers.print = function(t) {
-        text += t;
-      };
-
-      command_center.prompt();
-
-      text.search(/ndb\> /).should.not.equal(-1);
-    });
-
     describe("parsing", function() {
       before_each(function() {
         out = "";
@@ -67,17 +55,6 @@ describe("NodeDebugger", function() {
         command_center.commands.connection.should.equal(command_center.connection);
       });
 
-      it('should display the prompt', function() {
-        prompt_displayed = false;
-
-        command_center.prompt = function() {
-          prompt_displayed = true;
-        };
-
-        command_center.loop();
-        prompt_displayed.should.be(true);
-      });
-
       it('should open stdio', function() {
         opened = false;
 
@@ -115,17 +92,6 @@ describe("NodeDebugger", function() {
 
         command_center.stdinListener("rw {}");
         called_with.should.equal("{}");
-      });
-
-      it("should call the prompt when done", function() {
-        prompt_called = false;
-
-        command_center.prompt = function() {
-          prompt_called = true;
-        };
-
-        command_center.stdinListener("asdfsd");
-        prompt_called.should.be(true);
       });
     });
   });

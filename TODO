@@ -2,54 +2,52 @@
 - use a mock library
 
 == bugs / todo
-- fix output so that it is synchronous when in verbose mode
-
 - option parser:
     --verbose
+    --server
     --port
     --version
     --help
 
 -- commands:
-x h / help
-  h command
-  l / list
-    l
-    l =
-    l -
-    l +
-    l <num>
-    list breakpoints
-    list watchpoints
-  c / continue
-  b / break
-    (with no args)
-    filaname:num
-    <filename>:num
-  w / watchpoint (acts the same as a breakpoint - conditional breakpoint *on a line*)
-    expr
-    expr filename:num
-    expr num
-  d / delete
-    d breakpoint
-  n / next
-  s / step
-  r / repl
-    start a node-debugger repl
-  rw / RawWrite
-    rw <json>
-  version
-    display this version, v8 version, node version (process.version)?
-  e / eval
-    eval <expr>
-    print
-    set
-  bt / backtrace
-
-  sc / scope
-  scs / scopes
-  ct / context
-    display context / callstack
+[x] h / help
+[ ] h command
+[x] l / list
+[ ]   l
+[ ]   l =
+[ ]   l -
+[ ]   l +
+[ ]   l <num>
+[ ]   list breakpoints
+[ ]   list watchpoints
+[ ] c / continue
+[ ] b / break
+[ ]   (with no args)
+[ ]   filaname:num
+[ ]   <filename>:num
+[ ] w / watchpoint (acts the same as a breakpoint - conditional breakpoint *on a line*)
+[ ]   expr
+[ ]   expr filename:num
+[ ]   expr num
+[ ] d / delete
+[ ]   d breakpoint
+[ ] n / next
+[ ] s / step
+[ ] r / repl
+[ ]   start a node-debugger repl
+[x] rw / RawWrite
+[x]   rw <json>
+[ ] version
+[ ]   display this version, v8 version, node version (process.version)?
+[ ] e / eval
+[ ]   eval <expr>
+[ ]   print
+[ ]   set
+[ ] bt / backtrace
+[ ] sc / scope
+[ ] scs / scopes
+[ ] ct / context
+[ ]   display context / callstack
 
 - all events:
   - breakpoint

@@ -47,5 +47,17 @@ describe("NodeDebugger", function() {
 
       text.should.equal("received: foo");
     });
+
+    it("should output the repl text", function() {
+      var text = "";
+
+      NodeDebugger.Helpers.print = function(t) {
+        text += t;
+      };
+
+      event_listner.receive("foo");
+
+      text.search(/ndb\> /).should.not.equal(-1);
+    });
   });
 });
