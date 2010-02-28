@@ -15,7 +15,7 @@ describe("NodeDebugger", function() {
       it("should raw write the json", function() {
         var obj = undefined;
 
-        NodeDebugger.Commands.raw_write = {
+        NodeDebugger.Commands.RawWrite = {
           run: function(o) {
             obj = o;
           }

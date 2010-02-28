@@ -1,6 +1,6 @@
 describe("NodeDebugger", function() {
   describe("Commands", function() {
-    describe("raw_write", function() {
+    describe("RawWrite", function() {
       before_each(function() {
         connection = {
           write: function() {}
@@ -14,7 +14,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run("{some: json}");
+        commands.RawWrite.run("{some: json}");
 
         text.should.match(/\{some\: json\}/);
       });
@@ -23,7 +23,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run("{foo: bar}");
+        commands.RawWrite.run("{foo: bar}");
 
         text.should.match(/\{foo\: bar\}/);
       });
@@ -32,7 +32,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run("{foo: bar}");
+        commands.RawWrite.run("{foo: bar}");
 
         text.should.match(/\{foo\: bar\}\n/);
       });
@@ -41,7 +41,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run("{foo: bar}");
+        commands.RawWrite.run("{foo: bar}");
 
         text.should.match(/Content-Length: 11\r\n\r\n\{foo\: bar\}\n/);
       });
@@ -50,7 +50,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run("{a: b}");
+        commands.RawWrite.run("{a: b}");
 
         text.should.match(/Content-Length: 7\r/);
       });
@@ -59,7 +59,7 @@ describe("NodeDebugger", function() {
         text = "";
         connection.write = function(t) { text += t; };
 
-        commands.raw_write.run({foo: 'bar'});
+        commands.RawWrite.run({foo: 'bar'});
 
         var str = JSON.stringify({foo: 'bar'});
 

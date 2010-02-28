@@ -36,7 +36,7 @@ x h / help
   s / step
   r / repl
     start a node-debugger repl
-  rw / raw_write
+  rw / RawWrite
     rw <json>
   version
     display this version, v8 version, node version (process.version)?

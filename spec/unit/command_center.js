@@ -26,12 +26,12 @@ describe("NodeDebugger", function() {
         };
       });
 
-      it("should return the raw_write command when matching rw <some text>", function() {
-        command_center.parse("rw {}").toString().should.equal([NodeDebugger.Commands.raw_write, "{}"].toString());
+      it("should return the RawWrite command when matching rw <some text>", function() {
+        command_center.parse("rw {}").toString().should.equal([NodeDebugger.Commands.RawWrite, "{}"].toString());
       });
 
-      it("should return the raw_write command when matching any rw <some text>", function() {
-        command_center.parse("rw {foo: bar}").toString().should.equal([NodeDebugger.Commands.raw_write, "{foo: bar}"].toString());
+      it("should return the RawWrite command when matching any rw <some text>", function() {
+        command_center.parse("rw {foo: bar}").toString().should.equal([NodeDebugger.Commands.RawWrite, "{foo: bar}"].toString());
       });
 
       it("should return the help command for 'help'", function() {
@@ -43,7 +43,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should trim a command", function() {
-        command_center.parse("      rw {foo: bar}         ").toString().should.equal([NodeDebugger.Commands.raw_write, "{foo: bar}"].toString());
+        command_center.parse("      rw {foo: bar}         ").toString().should.equal([NodeDebugger.Commands.RawWrite, "{foo: bar}"].toString());
       });
 
       it("should parse l as a list command", function() {
@@ -94,7 +94,7 @@ describe("NodeDebugger", function() {
       it("should call the function if parsed correctly", function() {
         var called = false;
 
-        command_center.commands.raw_write = {
+        command_center.commands.RawWrite = {
           run: function() {
             called = true;
           }
@@ -107,7 +107,7 @@ describe("NodeDebugger", function() {
       it("should call the function with arguments", function() {
         var called_with = undefined;
 
-        command_center.commands.raw_write = {
+        command_center.commands.RawWrite = {
           run: function(arg) {
             called_with = arg;
           }
