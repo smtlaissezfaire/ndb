@@ -8,6 +8,8 @@ describe("NodeDebugger", function() {
 
         commands = NodeDebugger.Commands;
         commands.connection = connection;
+
+        raw_write = Object.create(commands.RawWrite);
       });
 
       it("should write the json to the connection", function() {
@@ -64,6 +66,32 @@ describe("NodeDebugger", function() {
         var str = JSON.stringify({foo: 'bar'});
 
         text.should.match(str);
+      });
+
+      it("should write to the log before writing out", function() {
+        var called = false;
+
+        raw_write.calling_module.verbose = true;
+
+        raw_write.calling_module.Helpers.log = function() {
+          called = true;
+        };
+
+        raw_write.run("foo");
+        called.should.be(true);
+      });
+
+      it("should not write to the log when its turned off", function() {
+        var called = false;
+
+        raw_write.calling_module.verbose = false;
+
+        raw_write.calling_module.Helpers.log = function() {
+          called = true;
+        };
+
+        raw_write.run("foo");
+        called.should.be(false);
       });
     });
   });
