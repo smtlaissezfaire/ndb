@@ -5,7 +5,7 @@ describe("NodeDebugger", function() {
     });
 
     it("should be in verbose mode by default", function() {
-      event_listner.verbose.should.be(true);
+      NodeDebugger.verbose.should.be(true);
     });
 
     it("should output the data received in verbose mode", function() {
@@ -30,7 +30,6 @@ describe("NodeDebugger", function() {
       event_listner.verbose = false;
 
       event_listner.receive("{}");
-
       text.should.equal("");
     });
 

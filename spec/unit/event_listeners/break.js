@@ -2,12 +2,11 @@ describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
       event_listner = Object.create(NodeDebugger.EventListener);
+      event_listner.verbose = false;
     });
 
     describe("for a break event", function() {
       before_each(function() {
-        event_listner.verbose = false;
-
         out = "";
 
         NodeDebugger.Helpers.puts = function(t) {
