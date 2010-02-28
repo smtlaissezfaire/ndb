@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-var sys = require('sys');
-
 require.paths.unshift(__dirname + "/../lib");
 var node_debugger = require("node_debugger");
 node_debugger.start();
