@@ -13,6 +13,29 @@ describe("NodeDebugger", function() {
         NodeDebugger.Helpers.puts = function(t) {
           out += t;
         };
+
+        source = "";
+        source += "function() {\n";
+        source += "  a += 1;\n";
+        source += "  b += 2;\n";
+        source += "}\n";
+
+        obj = {
+          "seq":      2,
+          "type":     "response",
+          "command":  "source",
+          "success":  true,
+          "body": {
+            "source":       source,
+            "fromLine":     0,
+            "toLine":       4,
+            "fromPosition": 0,
+            "toPosition":   88,
+            "totalLines":   4
+          },
+          "refs": [],
+          "running": false
+        };
       });
 
       // { "seq"         : <number>,
@@ -31,33 +54,26 @@ describe("NodeDebugger", function() {
       // }
 
       it("should output the source code", function() {
-        var obj = {
-          "seq":      2,
-          "type":     "response",
-          "command":  "source",
-          "success":  true,
-          "body": {
-            "source": "(function (exports, require, module, __filename, __dirname) { function foo() {\n  \n}\n});",
-            "fromLine":     0,
-            "toLine":       4,
-            "fromPosition": 0,
-            "toPosition":   88,
-            "totalLines":   4
-          },
-          "refs": [],
-          "running": false
-        };
+        var lines = obj.body.source.split("\n");
 
         var expected_output = "";
-        expected_output += "     1 | (function (exports, require, module, __filename, __dirname) { function foo() {";
-        expected_output += "     2 |   ";
-        expected_output += "     3 | }";
-        expected_output += "     4 | });";
-        expected_output = expected_output.replace(/\s+/, "");
+        expected_output += "   1 " + lines[0] + "\n";
+        expected_output += "   2 " + lines[1] + "\n";
+        expected_output += "   3 " + lines[2] + "\n";
+        expected_output += "   4 " + lines[3] + "\n";
+        expected_output = expected_output;
 
         event_listner.receive(JSON.stringify(obj));
 
-        out.replace(/\s+/, "").should.equal(expected_output);
+        out.should.equal(expected_output);
+      });
+
+      it("should output when the content-length header is included", function() {
+        var header = "Content-Length: 270\r\n\r\n";
+
+        event_listner.receive(header + JSON.stringify(obj));
+
+        (/function\(\) \{/).test(out).should.be(true);
       });
     });
   });
