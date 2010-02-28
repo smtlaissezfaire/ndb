@@ -17,7 +17,7 @@ describe("NodeDebugger", function() {
 
       event_listner.receive("{}");
 
-      text.should.equal("<<<: {}");
+      text.should.equal("verbose: <<< {}");
     });
 
     it("should not output the data received when not in verbose mode", function() {
@@ -45,7 +45,7 @@ describe("NodeDebugger", function() {
 
       event_listner.receive("foo");
 
-      text.should.equal("<<<: foo");
+      text.should.equal("verbose: <<< foo");
     });
 
     it("should output the repl text", function() {
