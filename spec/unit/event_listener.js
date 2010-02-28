@@ -23,7 +23,7 @@ describe("NodeDebugger", function() {
     it("should not output the data received when not in verbose mode", function() {
       var text = "";
 
-      event_listner.puts = function(t) {
+      NodeDebugger.Helpers.puts = function(t) {
         text += t;
       };
 
@@ -32,6 +32,20 @@ describe("NodeDebugger", function() {
       event_listner.receive("{}");
 
       text.should.equal("");
+    });
+
+    it("should not raise an error if it cannot parse the json given", function() {
+      var text = "";
+
+      NodeDebugger.Helpers.puts = function(t) {
+        text += t;
+      };
+
+      event_listner.verbose = true;
+
+      event_listner.receive("foo");
+
+      text.should.equal("received: foo");
     });
 
     describe("for a break event", function() {
