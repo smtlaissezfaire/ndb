@@ -1,8 +1,5 @@
 == dev todos
-- switch all print, puts, (all external dependencies) into *one* library
 - use a mock library
-- figure out away to remove all of the ugly "this." while still having hooks for testing.
-- switch to commonjs module system
 
 == bugs / todo
 - fix output so that it is synchronous when in verbose mode
