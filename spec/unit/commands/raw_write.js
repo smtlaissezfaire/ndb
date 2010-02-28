@@ -54,6 +54,17 @@ describe("NodeDebugger", function() {
 
         text.should.match(/Content-Length: 7\r/);
       });
+
+      it("should JSON.stringify an object", function() {
+        text = "";
+        connection.write = function(t) { text += t; };
+
+        commands.raw_write.run({foo: 'bar'});
+
+        var str = JSON.stringify({foo: 'bar'});
+
+        text.should.match(str);
+      });
     });
   });
 });
