@@ -2,13 +2,12 @@
 # ndb - the node debugger
 
 This is still in super-alpha.  I wouldn't try to use it for anything at all
-unless you enjoy feeling the pain of writing in the v8 debugger protocol:
-
-  http://code.google.com/p/v8/wiki/DebuggerProtocol
+unless you enjoy feeling the pain of writing in the 
+[v8 debugger protocol](http://code.google.com/p/v8/wiki/DebuggerProtocol)
 
 For an idea of it's current progress:
 
-  http://gist.github.com/317535
+  [http://gist.github.com/317535](http://gist.github.com/317535)
 
 ## License 
 
