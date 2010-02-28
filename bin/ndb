@@ -3,6 +3,5 @@
 var sys = require('sys');
 
 require.paths.unshift(__dirname + "/../lib");
-require("node_debugger");
-
-NodeDebugger.start();
+var node_debugger = require("node_debugger");
+node_debugger.start();
