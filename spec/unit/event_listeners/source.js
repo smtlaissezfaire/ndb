@@ -61,7 +61,6 @@ describe("NodeDebugger", function() {
         expected_output += "   2 " + lines[1] + "\n";
         expected_output += "   3 " + lines[2] + "\n";
         expected_output += "   4 " + lines[3] + "\n";
-        expected_output = expected_output;
 
         event_listner.receive(JSON.stringify(obj));
 
