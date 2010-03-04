@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 require.paths.unshift(__dirname + "/../lib");
-var node_debugger = require("node_debugger");
+var node_debugger = require("ndb");
 node_debugger.start();

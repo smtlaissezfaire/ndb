@@ -1,4 +1,4 @@
-NodeDebugger = require("node_debugger");
+NodeDebugger = require("ndb");
 
 connection = {
   setEncoding: function() {},
