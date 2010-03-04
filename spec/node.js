@@ -6,6 +6,7 @@ require.paths.unshift("./../lib");
 
 JSpec.
   exec('spec/unit/spec.js').
+  exec('spec/unit/ndb.js').
   exec('spec/unit/command_center.js').
   exec('spec/unit/event_listener.js').
   exec('spec/unit/commands/raw_write.js').
