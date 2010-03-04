@@ -1,5 +1,6 @@
 == dev todos
 - use a mock library
+- cleanup output from running tests: "ndb> ndb> ndb>"
 
 == bugs / todo
 - option parser:
@@ -12,7 +13,7 @@
 -- commands:
 [x] h / help
 [ ] h command
-[x] l / list
+[ ] l / list (but need to limit the file)
 [ ]   l
 [ ]   l =
 [ ]   l -
@@ -20,11 +21,13 @@
 [ ]   l <num>
 [ ]   list breakpoints
 [ ]   list watchpoints
+[ ]   list <file>
 [x] c / continue
 [ ] b / break
 [ ]   (with no args)
-[ ]   filaname:num
-[ ]   <filename>:num
+[ ]   filename:num
+[ ]   <filename>:num (infer the current filename)
+[ ]   function name
 [ ] w / watchpoint (acts the same as a breakpoint - conditional breakpoint *on a line*)
 [ ]   expr
 [ ]   expr filename:num
@@ -48,6 +51,7 @@
 [ ] scs / scopes
 [ ] ct / context
 [ ]   display context / callstack
+[ ] quit
 
 - all events:
   - breakpoint

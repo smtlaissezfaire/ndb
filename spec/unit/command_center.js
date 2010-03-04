@@ -53,6 +53,28 @@ describe("NodeDebugger", function() {
       it("should parse 'c' as a c command", function() {
         command_center.parse("c")[0].should.equal(NodeDebugger.Commands.Continue);
       });
+
+      it("should parse 'b' as a break command", function() {
+        command_center.parse("b")[0].should.equal(NodeDebugger.Commands.Break);
+      });
+
+      it("should parse 'break' as a break command", function() {
+        command_center.parse("break")[0].should.equal(NodeDebugger.Commands.Break);
+      });
+
+      it('should parse break with one arg', function() {
+        var parse = command_center.parse("break 10");
+
+        parse[0].should.equal(NodeDebugger.Commands.Break);
+        parse[1].toString().should.equal(["10"].toString());
+      });
+
+      it("should parse a break with multiple args", function() {
+        var parse = command_center.parse("break foo.js 10");
+
+        parse[0].should.equal(NodeDebugger.Commands.Break);
+        parse[1].toString().should.equal(["foo.js", "10"].toString());
+      });
     });
 
     describe("loop", function() {
