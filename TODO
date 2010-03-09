@@ -34,7 +34,8 @@
 [ ]   expr num
 [ ] d / delete
 [ ]   d breakpoint
-[ ] n / next
+[x] n / next
+[x]  n <num>
 [ ] s / step
 [ ] r / repl
 [ ]   start a node-debugger repl
@@ -62,3 +63,7 @@
   - exception
   - everything else should generate an execption
   - break
+
+- bugs / features:
+[ ] - readline would be nice
+[ ] - "empty" command should do last command, if present
