@@ -4,22 +4,15 @@ describe("NodeDebugger", function() {
       before_each(function() {
         version = Object.create(NodeDebugger.Commands.Version);
 
-        original_puts = NodeDebugger.Helpers.puts;
         puts_called_with = [];
-        NodeDebugger.Helpers.puts = function(text) {
+        spy.stub(NodeDebugger.Helpers, "puts", function(text) {
           puts_called_with.push(text);
-        };
+        });
 
-        original_prompt = NodeDebugger.EventListener.prompt;
         prompt_called = false;
-        NodeDebugger.EventListener.prompt = function() {
+        spy.stub(NodeDebugger.EventListener, "prompt", function() {
           prompt_called = true;
-        };
-      });
-
-      after_each(function() {
-        NodeDebugger.Helpers.puts = original_puts;
-        NodeDebugger.EventListener.prompt = original_prompt;
+        });
       });
 
       it("should output the ndb + node version", function() {
