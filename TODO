@@ -47,8 +47,7 @@
 [ ]   node remote version
 [x] e / eval
 [x]   eval <expr>
-[ ]   print
-[ ]   set
+[x]   print
 [ ] bt / backtrace
 [ ] sc / scope
 [ ] scs / scopes

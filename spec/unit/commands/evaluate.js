@@ -94,6 +94,11 @@ describe("NodeDebugger", function() {
           e[0].should.equal(evaluator);
           e[1].should.equal("{}");
         });
+
+        it("should parse 'print' with some text", function() {
+          var e = evaluator.parse("print {}");
+          e[0].should.equal(evaluator);
+        });
       });
     });
   });
