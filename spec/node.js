@@ -14,6 +14,7 @@ JSpec.
   exec('spec/unit/commands/list.js').
   exec('spec/unit/commands/continue.js').
   exec('spec/unit/commands/breakpoint.js').
+  exec('spec/unit/commands/quit.js').
   exec('spec/unit/event_listeners/break.js').
   exec('spec/unit/event_listeners/source.js').
   run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' }).

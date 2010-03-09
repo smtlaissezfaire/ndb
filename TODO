@@ -51,7 +51,7 @@
 [ ] scs / scopes
 [ ] ct / context
 [ ]   display context / callstack
-[ ] quit
+[x] quit
 
 - all events:
   - breakpoint
