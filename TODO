@@ -40,8 +40,11 @@
 [ ]   start a node-debugger repl
 [x] rw / RawWrite
 [x]   rw <json>
-[ ] version
-[ ]   display this version, v8 version, node version (process.version)?
+[x] version
+[x]   display this version,
+[ ]   v8 version,
+[x]   node version (local process.version)?
+[ ]   node remote version
 [ ] e / eval
 [ ]   eval <expr>
 [ ]   print
@@ -52,6 +55,8 @@
 [ ] ct / context
 [ ]   display context / callstack
 [x] quit
+[ ] verbose on
+[ ] verbose off (or unify the command to be a toggle)
 
 - all events:
   - breakpoint
