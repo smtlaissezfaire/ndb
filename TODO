@@ -45,8 +45,8 @@
 [ ]   v8 version,
 [x]   node version (local process.version)?
 [ ]   node remote version
-[ ] e / eval
-[ ]   eval <expr>
+[x] e / eval
+[x]   eval <expr>
 [ ]   print
 [ ]   set
 [ ] bt / backtrace
