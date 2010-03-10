@@ -4,8 +4,8 @@ describe("NodeDebugger", function() {
       event_listner = Object.create(NodeDebugger.EventListener);
     });
 
-    it("should be in verbose mode by default", function() {
-      NodeDebugger.verbose.should.be(true);
+    it("should NOT be in verbose mode by default", function() {
+      NodeDebugger.verbose.should.be(false);
     });
 
     it("should output the data received in verbose mode", function() {

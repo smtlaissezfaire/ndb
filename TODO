@@ -67,4 +67,4 @@
 [ ] readline would be nice
 [ ] "empty" command should do last command, if present
 [ ] don't show v8 json out when verbose is off
-[ ] default: verbose should be false
+[x] default: verbose should be false
