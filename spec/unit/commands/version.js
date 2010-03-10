@@ -33,10 +33,6 @@ describe("NodeDebugger", function() {
       it("should not parse 'foo'", function() {
         version.parse("foo").should.equal(undefined);
       });
-
-      it("should parse 'v' as the version", function() {
-        version.parse("v")[0].should.equal(version);
-      });
     });
   });
 });
