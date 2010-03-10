@@ -32,10 +32,6 @@ describe("NodeDebugger", function() {
         puts_called_with.should.equal("bye!");
       });
 
-      it("should parse q as quit", function() {
-        quitter.parse("q")[0].should.equal(quitter);
-      });
-
       it("should parse 'quit' as quit", function() {
         quitter.parse("quit")[0].should.equal(quitter);
       });
