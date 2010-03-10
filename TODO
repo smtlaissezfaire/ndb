@@ -55,8 +55,7 @@
 [ ] ct / context
 [ ]   display context / callstack
 [x] quit
-[ ] verbose on
-[ ] verbose off (or unify the command to be a toggle)
+[x] verbose on / off (toggle)
 
 - all events:
   - breakpoint
@@ -65,5 +64,7 @@
   - break
 
 - bugs / features:
-[ ] - readline would be nice
-[ ] - "empty" command should do last command, if present
+[ ] readline would be nice
+[ ] "empty" command should do last command, if present
+[ ] don't show v8 json out when verbose is off
+[ ] default: verbose should be false

@@ -27,6 +27,7 @@ JSpec.
   exec('spec/unit/commands/version.js').
   exec('spec/unit/commands/evaluate.js').
   exec('spec/unit/commands/next.js').
+  exec('spec/unit/commands/verbose.js').
   exec('spec/unit/event_listeners/break.js').
   exec('spec/unit/event_listeners/source.js').
   run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' }).
