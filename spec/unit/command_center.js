@@ -62,6 +62,11 @@ describe("NodeDebugger", function() {
         command_center.parse("break")[0].should.equal(NodeDebugger.Commands.Break);
       });
 
+      it("should parse version as the version", function() {
+        var parse = command_center.parse("version");
+        parse[0].should.equal(NodeDebugger.Commands.Version);
+      });
+
       it('should parse break with one arg', function() {
         var parse = command_center.parse("break 10");
 
