@@ -28,12 +28,6 @@
 [ ]   filename:num
 [ ]   <filename>:num (infer the current filename)
 [ ]   function name
-[ ] w / watchpoint (acts the same as a breakpoint - conditional breakpoint *on a line*)
-[ ]   expr
-[ ]   expr filename:num
-[ ]   expr num
-[ ] d / delete
-[ ]   d breakpoint
 [x] n / next
 [x]  n <num>
 [ ] s / step
@@ -57,6 +51,12 @@
 [ ]   display context / callstack
 [x] quit
 [x] verbose on / off (toggle)
+[ ] w / watchpoint (acts the same as a breakpoint - conditional breakpoint *on a line*)
+[ ]   expr
+[ ]   expr filename:num
+[ ]   expr num
+[ ] d / delete
+[ ]   d breakpoint
 
 - all events:
   - breakpoint

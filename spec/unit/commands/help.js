@@ -12,15 +12,27 @@ describe("NodeDebugger", function() {
         help = commands.Help;
       });
 
-      it("should output the help text", function() {
+      it("should output all of the command names", function() {
         var text = "";
 
-        NodeDebugger.Helpers.puts = function(t) {
+        spy.stub(NodeDebugger.Helpers, "puts", function(t) {
           text += t;
-        };
+        });
 
         help.run();
-        text.should.equal(help.text);
+        text.should.match(/b\, break/);
+        text.should.match(/l\, list/);
+      });
+
+      it("should sort the commands", function() {
+        var text = "";
+
+        spy.stub(NodeDebugger.Helpers, "puts", function(t) {
+          text += t;
+        });
+
+        help.run();
+        text.replace(/\n/g, "").should.match(/break.+list/);
       });
     });
   });
