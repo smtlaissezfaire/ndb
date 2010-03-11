@@ -12,7 +12,6 @@
 
 -- commands:
 [x] h / help
-[ ] h command
 [ ] l / list (but need to limit the file)
 [ ]   l
 [ ]   l =
