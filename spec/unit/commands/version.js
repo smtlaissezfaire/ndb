@@ -2,15 +2,15 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("version", function() {
       before_each(function() {
-        version = Object.create(NodeDebugger.Commands.Version);
+        version = ndb.Commands.Version;
 
         puts_called_with = [];
-        spy.stub(NodeDebugger.Helpers, "puts", function(text) {
+        spy.stub(ndb.Helpers, "puts", function(text) {
           puts_called_with.push(text);
         });
 
         prompt_called = false;
-        spy.stub(NodeDebugger.EventListener, "prompt", function() {
+        spy.stub(ndb.EventListener, "prompt", function() {
           prompt_called = true;
         });
       });

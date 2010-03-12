@@ -2,7 +2,7 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("verbose", function() {
       before_each(function() {
-        verbose = Object.create(NodeDebugger.Commands.Verbose);
+        verbose = ndb.Commands.Verbose;
         node_debugger = verbose.calling_module;
       });
 

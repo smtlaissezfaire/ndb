@@ -2,7 +2,7 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("backtrace", function() {
       before_each(function() {
-        backtrace = NodeDebugger.Commands.Backtrace;
+        backtrace = ndb.Commands.Backtrace;
       });
 
       describe("parsing", function() {
@@ -21,7 +21,7 @@ describe("NodeDebugger", function() {
 
       describe("running", function() {
         before_each(function() {
-          raw_write = NodeDebugger.Commands.RawWrite;
+          raw_write = ndb.Commands.RawWrite;
           spy.stub(raw_write, "run");
         });
 

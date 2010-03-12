@@ -6,7 +6,7 @@ describe("NodeDebugger", function() {
           write: function() {}
         };
 
-        commands = NodeDebugger.Commands;
+        commands = ndb.Commands;
         commands.connection = connection;
 
         help = commands.Help;
@@ -15,7 +15,7 @@ describe("NodeDebugger", function() {
       it("should output all of the command names", function() {
         var text = "";
 
-        spy.stub(NodeDebugger.Helpers, "puts", function(t) {
+        spy.stub(ndb.Helpers, "puts", function(t) {
           text += t;
         });
 
@@ -27,7 +27,7 @@ describe("NodeDebugger", function() {
       it("should sort the commands", function() {
         var text = "";
 
-        spy.stub(NodeDebugger.Helpers, "puts", function(t) {
+        spy.stub(ndb.Helpers, "puts", function(t) {
           text += t;
         });
 

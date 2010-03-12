@@ -6,10 +6,10 @@ describe("NodeDebugger", function() {
           write: function() {}
         };
 
-        commands = NodeDebugger.Commands;
+        commands = ndb.Commands;
         commands.connection = connection;
 
-        raw_write = Object.create(commands.RawWrite);
+        raw_write = commands.RawWrite;
       });
 
       it("should write the json to the connection", function() {

@@ -2,7 +2,7 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("next", function() {
       before_each(function() {
-        next = NodeDebugger.Commands.Next;
+        next = ndb.Commands.Next;
       });
 
       describe("parsing", function() {
@@ -41,7 +41,7 @@ describe("NodeDebugger", function() {
       // {"seq":119,"type":"request","command":"continue","arguments":{"stepaction":"next","stepcount":5}}
       describe("running", function() {
         before_each(function() {
-          raw_write = NodeDebugger.Commands.RawWrite;
+          raw_write = ndb.Commands.RawWrite;
           spy.stub(raw_write, "run");
         });
 

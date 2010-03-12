@@ -1,7 +1,7 @@
 describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
-      event_listner = Object.create(NodeDebugger.EventListener);
+      event_listner = ndb.EventListener;
     });
 
     describe("for a source event", function() {
@@ -10,7 +10,7 @@ describe("NodeDebugger", function() {
 
         out = "";
 
-        NodeDebugger.Helpers.puts = function(t) {
+        ndb.Helpers.puts = function(t) {
           out += t;
         };
 

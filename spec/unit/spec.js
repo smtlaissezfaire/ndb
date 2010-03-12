@@ -5,25 +5,24 @@ describe('NodeDebugger', function() {
         loop: function() {}
       };
 
-      node_debugger = Object.create(NodeDebugger);
-      node_debugger.commandCenter = command_center;
+      ndb.commandCenter = command_center;
     });
 
     describe("starting", function() {
       it("should output welcome text", function() {
         var text = "";
 
-        node_debugger.Helpers.puts = function(t) {
+        ndb.Helpers.puts = function(t) {
           text += t;
         };
 
-        node_debugger.start();
+        ndb.start();
 
         text.search(/welcome to the node debugger!/).should.not.equal(-1);
       });
 
       it("should have the default port as 5858", function() {
-        node_debugger.port.should.equal(5858);
+        ndb.port.should.equal(5858);
       });
 
       it("should establish the connection on port 5858", function() {
@@ -34,21 +33,21 @@ describe('NodeDebugger', function() {
           return connection;
         };
 
-        node_debugger.start();
+        ndb.start();
         port_received.should.equal(5858);
       });
 
       it("should establish the connection on the correct port", function() {
         var port_received = null;
 
-        node_debugger.port = 6000;
+        ndb.port = 6000;
 
         tcp.createConnection = function(port) {
           port_received = port;
           return connection;
         };
 
-        node_debugger.start();
+        ndb.start();
         port_received.should.equal(6000);
       });
 
@@ -59,12 +58,12 @@ describe('NodeDebugger', function() {
           encoding_received = encoding;
         };
 
-        node_debugger.start();
+        ndb.start();
         encoding_received.should.equal("ascii");
       });
 
       it("should set the command center's connection", function() {
-        node_debugger.start();
+        ndb.start();
 
         command_center.connection.should.equal(connection);
       });
@@ -76,7 +75,7 @@ describe('NodeDebugger', function() {
           loop_called = true;
         };
 
-        node_debugger.start();
+        ndb.start();
 
         loop_called.should.be(true);
       });
@@ -88,7 +87,7 @@ describe('NodeDebugger', function() {
           called = true;
         };
 
-        node_debugger.start();
+        ndb.start();
         called.should.be(true);
       });
     });

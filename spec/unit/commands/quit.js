@@ -8,18 +8,18 @@ describe("NodeDebugger", function() {
           exit_called = true;
         };
 
-        original_puts = NodeDebugger.Helpers.puts;
+        original_puts = ndb.Helpers.puts;
         puts_called_with = undefined;
-        NodeDebugger.Helpers.puts = function(text) {
+        ndb.Helpers.puts = function(text) {
           puts_called_with = text;
         };
 
-        quitter = Object.create(NodeDebugger.Commands.Quit);
+        quitter = ndb.Commands.Quit;
       });
 
       after_each(function() {
         process.exit = original_exit;
-        NodeDebugger.Helpers.puts = original_puts;
+        ndb.Helpers.puts = original_puts;
       });
 
       it("should quit", function() {

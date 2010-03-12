@@ -18,6 +18,8 @@ JSpec.
   exec('spec/unit/ndb.js').
   exec('spec/unit/command_center.js').
   exec('spec/unit/event_listener.js').
+  exec('spec/unit/event_listeners/break.js').
+  exec('spec/unit/event_listeners/source.js').
   exec('spec/unit/commands/raw_write.js').
   exec('spec/unit/commands/help.js').
   exec('spec/unit/commands/list.js').
@@ -29,7 +31,5 @@ JSpec.
   exec('spec/unit/commands/next.js').
   exec('spec/unit/commands/verbose.js').
   exec('spec/unit/commands/backtrace.js').
-  exec('spec/unit/event_listeners/break.js').
-  exec('spec/unit/event_listeners/source.js').
   run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' }).
   report();

@@ -6,7 +6,7 @@ describe("NodeDebugger", function() {
           write: function() {}
         };
 
-        commands = NodeDebugger.Commands;
+        commands = ndb.Commands;
         commands.connection = connection;
 
         c = commands.Continue;
@@ -18,7 +18,7 @@ describe("NodeDebugger", function() {
       it("should raw_write the continue command", function() {
         var obj = undefined;
 
-        NodeDebugger.Commands.RawWrite = {
+        ndb.Commands.RawWrite = {
           run: function(o) {
             obj = o;
           }

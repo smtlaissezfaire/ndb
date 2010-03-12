@@ -6,7 +6,7 @@ describe("NodeDebugger", function() {
           write: function() {}
         };
 
-        commands = NodeDebugger.Commands;
+        commands = ndb.Commands;
         commands.connection = connection;
 
         list = commands.List;
@@ -15,7 +15,7 @@ describe("NodeDebugger", function() {
       it("should raw write the json", function() {
         var obj = undefined;
 
-        NodeDebugger.Commands.RawWrite = {
+        ndb.Commands.RawWrite = {
           run: function(o) {
             obj = o;
           }

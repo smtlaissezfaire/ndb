@@ -1,21 +1,49 @@
-NodeDebugger = require("ndb");
+SpecHelpers = {};
+SpecHelpers.clone = function(source) {
+  var clone,
+      key;
 
-connection = {
-  setEncoding: function() {},
-  addListener: function() {}
-};
-
-tcp = {
-  createConnection: function() {
-    return connection;
+  try {
+    clone = Object.create(source);
+  } catch (_) {
+    return source;
   }
+
+  for (key in clone) {
+    if (clone.hasOwnProperty(key)) {
+      clone[key] = SpecHelpers.clone(clone[key]);
+    }
+  }
+
+  return clone;
 };
 
-NodeDebugger.Helpers.tcp = tcp;
+JSpec.include({
+  beforeSpec: function() {
+    ndb = SpecHelpers.clone(require("ndb"));
 
-mock_stdio = {
-  open: function() {},
-  addListener: function() {}
-};
+    connection = {
+      setEncoding: function() {},
+      addListener: function() {}
+    };
 
-NodeDebugger.Helpers.stdio = mock_stdio;
+    tcp = {
+      createConnection: function() {
+        return connection;
+      }
+    };
+
+    ndb.Helpers.tcp = tcp;
+
+    mock_stdio = {
+      open: function() {},
+      addListener: function() {}
+    };
+
+    ndb.Helpers.stdio = mock_stdio;
+    ndb.Helpers.puts  = function() {};
+    ndb.Helpers.print = function() {};
+  }
+});
+
+

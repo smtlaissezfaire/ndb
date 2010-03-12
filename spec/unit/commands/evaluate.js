@@ -2,9 +2,9 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("evaluate", function() {
       before_each(function() {
-        evaluator = NodeDebugger.Commands.Evaluate;
+        evaluator = ndb.Commands.Evaluate;
 
-        raw_write = NodeDebugger.Commands.RawWrite;
+        raw_write = ndb.Commands.RawWrite;
         spy.stub(raw_write, "run");
       });
 
@@ -50,16 +50,16 @@ describe("NodeDebugger", function() {
       // verbose: <<< {"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":2,"text":"2"},"refs":[],"running":false}
       describe("output", function() {
         before_each(function() {
-          event_listner = NodeDebugger.EventListener;
+          event_listner = ndb.EventListener;
         });
 
         it("should ouptut the text with an arrow", function() {
           var json = '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":2,"text":"2"},"refs":[],"running":false}';
 
-          spy.spyOn(NodeDebugger.Helpers, function() {
+          spy.spyOn(ndb.Helpers, function() {
             event_listner.receive(json);
 
-            spy.intercepted(NodeDebugger.Helpers, "puts", function(text) {
+            spy.intercepted(ndb.Helpers, "puts", function(text) {
               text.should.equal("=> 2");
             });
           });
@@ -68,10 +68,10 @@ describe("NodeDebugger", function() {
         it("should output the correct text", function() {
           var json = '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":3,"text":"3"},"refs":[],"running":false}';
 
-          spy.spyOn(NodeDebugger.Helpers, function() {
+          spy.spyOn(ndb.Helpers, function() {
             event_listner.receive(json);
 
-            spy.intercepted(NodeDebugger.Helpers, "puts", function(text) {
+            spy.intercepted(ndb.Helpers, "puts", function(text) {
               text.should.equal("=> 3");
             });
           });

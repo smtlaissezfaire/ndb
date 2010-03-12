@@ -6,7 +6,7 @@ describe("NodeDebugger", function() {
           write: function() {}
         };
 
-        commands = NodeDebugger.Commands;
+        commands = ndb.Commands;
         commands.connection = connection;
 
         breakpoint = commands.Break;
@@ -15,7 +15,7 @@ describe("NodeDebugger", function() {
       it("should raw write the json with the filename + fileno", function() {
         var obj = undefined;
 
-        NodeDebugger.Commands.RawWrite = {
+        ndb.Commands.RawWrite = {
           run: function(o) {
             obj = o;
           }
@@ -39,7 +39,7 @@ describe("NodeDebugger", function() {
       it('should use the correct filename + lineno', function() {
         var obj = undefined;
 
-        NodeDebugger.Commands.RawWrite = {
+        ndb.Commands.RawWrite = {
           run: function(o) {
             obj = o;
           }
