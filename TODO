@@ -66,5 +66,6 @@
 [ ] readline would be nice
 [ ] "empty" command should do last command, if present
 [x] don't show v8 json out when verbose is off
-[x] default: verbose should be false
+[ ] default: verbose should be false
 [ ] all messages have a message header - look for it & ignore it properly
+[ ] respect the Content-Length header.
