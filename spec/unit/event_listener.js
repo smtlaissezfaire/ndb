@@ -4,10 +4,6 @@ describe("NodeDebugger", function() {
       event_listner = ndb.EventListener;
     });
 
-    it("should NOT be in verbose mode by default", function() {
-      ndb.verbose.should.be(false);
-    });
-
     it("should output the data received in verbose mode", function() {
       var text = "";
 
@@ -15,8 +11,8 @@ describe("NodeDebugger", function() {
         text += t;
       };
 
+      ndb.verbose = true;
       event_listner.receive("{}");
-
       text.should.equal("verbose: <<< {}");
     });
 
@@ -27,8 +23,7 @@ describe("NodeDebugger", function() {
         text += t;
       };
 
-      event_listner.verbose = false;
-
+      ndb.verbose = false;
       event_listner.receive("{}");
       text.should.equal("");
     });
@@ -40,10 +35,8 @@ describe("NodeDebugger", function() {
         text += t;
       };
 
-      event_listner.verbose = true;
-
+      ndb.verbose = true;
       event_listner.receive("foo");
-
       text.should.equal("verbose: <<< foo");
     });
 
@@ -54,8 +47,8 @@ describe("NodeDebugger", function() {
         text += t;
       };
 
+      ndb.verbose = true;
       event_listner.receive("foo");
-
       text.search(/ndb\> /).should.not.equal(-1);
     });
   });

@@ -1,26 +1,7 @@
-SpecHelpers = {};
-SpecHelpers.clone = function(source) {
-  var clone,
-      key;
-
-  try {
-    clone = Object.create(source);
-  } catch (_) {
-    return source;
-  }
-
-  for (key in clone) {
-    if (clone.hasOwnProperty(key)) {
-      clone[key] = SpecHelpers.clone(clone[key]);
-    }
-  }
-
-  return clone;
-};
-
 JSpec.include({
   beforeSpec: function() {
-    ndb = SpecHelpers.clone(require("ndb"));
+    ndb = require("ndb");
+    ndb.verbose = false;
 
     connection = {
       setEncoding: function() {},

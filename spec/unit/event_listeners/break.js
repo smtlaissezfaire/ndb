@@ -2,7 +2,6 @@ describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
       event_listner = ndb.EventListener;
-      event_listner.verbose = false;
     });
 
     describe("for a break event", function() {
