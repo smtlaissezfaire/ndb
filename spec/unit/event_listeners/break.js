@@ -2,6 +2,7 @@ describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
       event_listner = ndb.EventListener;
+      header = "Content-Length: 1\r\n\r\n";
     });
 
     describe("for a break event", function() {
@@ -16,7 +17,7 @@ describe("NodeDebugger", function() {
       // {"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}
 
       it("should output a break event", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
 
         event_listner.receive(json);
 
@@ -24,7 +25,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should buffer the data", function() {
-        var json = '{"seq":117,"type":"event","event":"break","bo';
+        var json = header + '{"seq":117,"type":"event","event":"break","bo';
         var json2 = 'dy":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
 
         event_listner.receive(json);
@@ -34,7 +35,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should reset the buffer after a successful call", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
 
         event_listner.receive(json);
 
@@ -42,7 +43,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should use the correct source column number", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":6}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":6}}';
 
         event_listner.receive(json);
 
@@ -50,7 +51,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should use the correct source line number", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":2,"sourceColumn":14}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":2,"sourceColumn":14}}';
 
         event_listner.receive(json);
 
@@ -58,7 +59,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should use the correct function name", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"foo","sourceLine":1,"sourceColumn":14}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"foo","sourceLine":1,"sourceColumn":14}}';
 
         event_listner.receive(json);
 
@@ -68,7 +69,7 @@ describe("NodeDebugger", function() {
       // {"seq":117,"type":"event","event":"break","body":{"functionName":"g","scriptData":"test.js","sourceLine":12,"sourceColumn":22,"breakpoints":[1]}}
 
       it("should output the filename + breakpoints when given", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"g","scriptData":"test.js","sourceLine":12,"sourceColumn":22,"breakpoints":[1]}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"g","scriptData":"test.js","sourceLine":12,"sourceColumn":22,"breakpoints":[1]}}';
 
         event_listner.receive(json);
 
@@ -77,7 +78,7 @@ describe("NodeDebugger", function() {
 
       // {"seq":117,"type":"event","event":"break","body":{"functionName":"h","sourceLine":100,"sourceColumn":12,"breakpoints":[3,5,7]}}
       it("should output multiple breakpoints", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"h","sourceLine":100,"sourceColumn":12,"breakpoints":[3,5,7]}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"h","sourceLine":100,"sourceColumn":12,"breakpoints":[3,5,7]}}';
 
         event_listner.receive(json);
 
@@ -85,7 +86,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should output the sourceline if one is given", function() {
-        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"h","sourceLine":100,"sourceColumn":12,"sourceLineText":"foo() {};"}}';
+        var json = header + '{"seq":117,"type":"event","event":"break","body":{"functionName":"h","sourceLine":100,"sourceColumn":12,"sourceLineText":"foo() {};"}}';
 
         event_listner.receive(json);
 
