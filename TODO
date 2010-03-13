@@ -2,14 +2,6 @@
 - use a mock library
 - cleanup output from running tests: "ndb> ndb> ndb>"
 
-== bugs / todo
-- option parser:
-    --verbose
-    --server
-    --port
-    --version
-    --help
-
 -- commands:
 [x] h / help
 [ ] l / list (but need to limit the file)
@@ -63,8 +55,16 @@
   - everything else should generate an execption
   - break
 
-- bugs / features:
+== bugs / todo
+[ ] option parser:
+    --verbose
+    --server
+    --port
+    --version
+    --help
+    --local (script) - shell script to spawn node + ndb
 [ ] readline would be nice
 [ ] "empty" command should do last command, if present
-[ ] don't show v8 json out when verbose is off
+[x] don't show v8 json out when verbose is off
 [x] default: verbose should be false
+[ ] all messages have a message header - look for it & ignore it properly
