@@ -1,9 +1,7 @@
 JSpec.include({
   beforeSpec: function() {
     ndb = require("ndb");
-    ndb.verbose = false;
-
-    ndb.EventListener.buffer = "";
+    ndb.reset();
 
     connection = {
       setEncoding: function() {},
