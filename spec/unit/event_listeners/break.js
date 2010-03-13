@@ -23,6 +23,24 @@ describe("NodeDebugger", function() {
         out.should.equal("Breakpoint at 1:14 (in function f)");
       });
 
+      it("should buffer the data", function() {
+        var json = '{"seq":117,"type":"event","event":"break","bo';
+        var json2 = 'dy":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
+
+        event_listner.receive(json);
+        event_listner.receive(json2);
+
+        out.should.equal("Breakpoint at 1:14 (in function f)");
+      });
+
+      it("should reset the buffer after a successful call", function() {
+        var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":14}}';
+
+        event_listner.receive(json);
+
+        event_listner.buffer.should.equal("");
+      });
+
       it("should use the correct source column number", function() {
         var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":1,"sourceColumn":6}}';
 

@@ -3,6 +3,8 @@ JSpec.include({
     ndb = require("ndb");
     ndb.verbose = false;
 
+    ndb.EventListener.buffer = "";
+
     connection = {
       setEncoding: function() {},
       addListener: function() {}
