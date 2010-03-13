@@ -2,6 +2,7 @@ describe("NodeDebugger", function() {
   describe("EventListener", function() {
     before_each(function() {
       event_listner = ndb.EventListener;
+      ndb.verbose = false;
       header = "Content-Length: 1\r\n\r\n";
     });
 
