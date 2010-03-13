@@ -31,5 +31,6 @@ JSpec.
   exec('spec/unit/commands/next.js').
   exec('spec/unit/commands/verbose.js').
   exec('spec/unit/commands/backtrace.js').
+  exec('spec/unit/message_parser.js').
   run({ reporter: JSpec.reporters.Terminal, fixturePath: 'spec/fixtures' }).
   report();
