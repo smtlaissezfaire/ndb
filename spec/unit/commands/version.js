@@ -10,7 +10,7 @@ describe("NodeDebugger", function() {
         });
 
         prompt_called = false;
-        spy.stub(ndb.EventListener, "prompt", function() {
+        spy.stub(ndb.Helpers, "prompt", function() {
           prompt_called = true;
         });
       });

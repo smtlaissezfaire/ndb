@@ -69,7 +69,7 @@
 [ ] default: verbose should be false
 [x] all messages have a message header - look for it & ignore it properly
 [x] respect the Content-Length header.
-[ ] bug with version command:
+[x] bug with version command:
   ndb> version
   ndb:          version 0.0.1
   node (local): version v0.1.30-13-g9ad7539
