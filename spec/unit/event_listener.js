@@ -51,5 +51,14 @@ describe("NodeDebugger", function() {
       event_listner.receive("foo");
       text.search(/ndb\> /).should.not.equal(-1);
     });
+
+    describe("handling the content-length", function() {
+      it("should reset the buffer to the empty string when Content-Length: 0", function() {
+        var message = "";
+
+        event_listner.receive(SpecHelpers.makeResponse(message));
+        event_listner.buffer.should.equal("");
+      });
+    });
   });
 });
