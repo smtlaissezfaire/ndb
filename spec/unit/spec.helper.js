@@ -1,3 +1,13 @@
+SpecHelpers = {
+  makeHeader: function(content) {
+    return "Content-Length: " + content.length + "\r\n\r\n";
+  },
+
+  makeResponse: function(content) {
+    return SpecHelpers.makeHeader(content) + content;
+  }
+};
+
 JSpec.include({
   beforeSpec: function() {
     ndb = require("ndb");

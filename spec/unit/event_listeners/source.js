@@ -64,23 +64,22 @@ describe("NodeDebugger", function() {
         expected_output += "   3 " + lines[2] + "\n";
         expected_output += "   4 " + lines[3] + "\n";
 
-        event_listner.receive(header + JSON.stringify(obj));
+        event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
 
         out.should.equal(expected_output);
       });
 
       it("should output when the content-length header is included", function() {
-        var header = "Content-Length: 270\r\n\r\n";
-
-        event_listner.receive(header + JSON.stringify(obj));
+        event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
 
         (/function\(\) \{/).test(out).should.be(true);
       });
 
       it("should ignore all headers", function() {
-        var headers = "Content-Length: 270\r\nFoo: bar\r\n\r\n";
+        var content = JSON.stringify(obj);
+        var headers = "Content-Length: " + content.length + "\r\nFoo: bar\r\n\r\n";
 
-        event_listner.receive(headers + JSON.stringify(obj));
+        event_listner.receive(headers + content);
 
         (/function\(\) \{/).test(out).should.be(true);
       });

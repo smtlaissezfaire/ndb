@@ -51,14 +51,13 @@ describe("NodeDebugger", function() {
       describe("output", function() {
         before_each(function() {
           event_listner = ndb.EventListener;
-          header = "\r\n\r\n";
         });
 
         it("should ouptut the text with an arrow", function() {
-          var json = header + '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":2,"text":"2"},"refs":[],"running":false}';
+          var json = '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":2,"text":"2"},"refs":[],"running":false}';
 
           spy.spyOn(ndb.Helpers, function() {
-            event_listner.receive(json);
+            event_listner.receive(SpecHelpers.makeResponse(json));
 
             spy.intercepted(ndb.Helpers, "puts", function(text) {
               text.should.equal("=> 2");
@@ -67,10 +66,10 @@ describe("NodeDebugger", function() {
         });
 
         it("should output the correct text", function() {
-          var json = header + '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":3,"text":"3"},"refs":[],"running":false}';
+          var json = '{"seq":4,"type":"response","command":"evaluate","success":true,"body":{"handle":13,"type":"number","value":3,"text":"3"},"refs":[],"running":false}';
 
           spy.spyOn(ndb.Helpers, function() {
-            event_listner.receive(json);
+            event_listner.receive(SpecHelpers.makeResponse(json));
 
             spy.intercepted(ndb.Helpers, "puts", function(text) {
               text.should.equal("=> 3");
