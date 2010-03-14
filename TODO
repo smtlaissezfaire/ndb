@@ -1,8 +1,5 @@
-== dev todos
-- use a mock library
-- cleanup output from running tests: "ndb> ndb> ndb>"
-
 -- commands:
+
 [x] h / help
 [ ] l / list (but need to limit the file)
 [ ]   l
@@ -48,6 +45,11 @@
 [ ]   expr num
 [ ] d / delete
 [ ]   d breakpoint
+[ ] editor comamnds to open the current file in the editor:
+[ ]   tmate
+[ ]   emacs
+[ ]   vim
+[ ]   ed
 
 - all events:
   - breakpoint
