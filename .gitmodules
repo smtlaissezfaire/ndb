@@ -1,3 +1,6 @@
 [submodule "spec/espionage"]
 	path = spec/espionage
 	url = git@github.com:smtlaissezfaire/espionage.git
+[submodule "spec/underscore"]
+	path = spec/underscore
+	url = git://github.com/documentcloud/underscore.git
