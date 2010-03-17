@@ -93,6 +93,39 @@ describe("NodeDebugger", function() {
         var regex = new RegExp(/foo\(\)\ \{\}\;/);
         out.search(regex).should.not.equal(-1);
       });
+
+      // { "seq"   : <number>,
+      //   "type"  : "event",
+      //
+      //   "event" : "break",
+      //   "body"  : { "invocationText" : <text representation of the stack frame>,
+      //               "sourceLine"     : <source line where execution is stopped>,
+      //               "sourceColumn"   : <column within the source line where execution is stopped>,
+      //               "sourceLineText" : <text for the source line where execution is stopped>,
+      //               "script"         : { name         : <resource name of the origin of the script>
+      //                                    lineOffset   : <line offset within the origin of the script>
+      //                                    columnOffset : <column offset within the origin of the script>
+      //                                    lineCount    : <number of lines in the script>
+      //               "breakpoints"    : <array of break point numbers hit if any>
+      //             }
+      // }
+      it("should store the filename + line number", function() {
+        var json = JSON.stringify({
+          seq: 1,
+          type: "event",
+          event: "break",
+          body: {
+            script: {
+              name: "foo.js",
+              lineOffset: 30
+            }
+          }
+        });
+
+        event_listner.receive(SpecHelpers.makeResponse(json));
+        ndb.State.filename.should.equal("foo.js");
+        ndb.State.lineNumber.should.equal(30);
+      });
     });
   });
 });
