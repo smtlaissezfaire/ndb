@@ -80,3 +80,8 @@
       at Object.stdinListener (/Users/scotttaylor/src/git/ndb/lib/ndb.js:133:17)
       at EventEmitter.<anonymous> (/Users/scotttaylor/src/git/ndb/lib/ndb.js:148:28)
       at node.js:1055:9
+[ ] listing output: show an optional # of lines of context when listing
+[ ] listing output: display arrow next to currently executing line
+[ ] listing output: show first 5 lines when on first line
+[ ] listing output: show last 5 lines when on last line
+[ ] listing output: show 2 lines of +/- context normally

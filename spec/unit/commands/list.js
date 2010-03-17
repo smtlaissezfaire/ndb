@@ -10,6 +10,8 @@ describe("NodeDebugger", function() {
         commands.connection = connection;
 
         list = commands.List;
+
+        writer = ndb.Commands.RawWrite;
       });
 
       it("should raw write the json", function() {
@@ -23,12 +25,29 @@ describe("NodeDebugger", function() {
 
         var expected_object = {
           type:    "request",
-          command: "source"
+          command: "source",
+          arguments: {
+            "fromLine": 1,
+            "toLine":   6
+          }
         };
 
         list.run();
 
         JSON.stringify(obj).should.equal(JSON.stringify(expected_object));
+      });
+
+      it("should use the line number from the break event", function() {
+        ndb.State.lineNumber = 10;
+
+        spy.spyOn(writer, function() {
+          list.run();
+
+          spy.intercepted(writer, "run", function(obj) {
+            obj["arguments"].fromLine.should.equal(10);
+            obj["arguments"].toLine.should.equal(15);
+          });
+        });
       });
     });
   });
