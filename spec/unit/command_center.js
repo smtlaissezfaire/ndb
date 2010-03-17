@@ -100,6 +100,32 @@ describe("NodeDebugger", function() {
         command_center.loop();
         opened.should.be(true);
       });
+
+      describe("storing a command", function() {
+        it('should have the last command as null if no commands have been run', function() {
+          command_center.lastCommand.should.equal(null);
+        });
+
+        it("should store the last command when parsed succesfully", function() {
+          var continue_cmd = command_center.parse("c");
+          command_center.lastCommand.should.equal(continue_cmd);
+        });
+
+        it("should reset the command when none found (after a successful parse)", function() {
+          command_center.parse("c");
+          command_center.parse("adfasdfasdfad");
+          command_center.lastCommand.should.equal(null);
+        });
+
+        it("should run the last command if an empty string is given", function() {
+          var continue_cmd = command_center.parse("c");
+          command_center.parse("").should.equal(continue_cmd);
+        });
+
+        it("should not return the last command if there is no last command", function() {
+          command_center.parse("")[0].should.equal(command_center.parse("asdfadf")[0]);
+        });
+      });
     });
   });
 });

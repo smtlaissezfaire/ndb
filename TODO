@@ -66,7 +66,7 @@
     --help
     --local (script) - shell script to spawn node + ndb
 [ ] readline would be nice
-[ ] "empty" command should do last command, if present
+[x] "empty" command should do last command, if present
 [x] don't show v8 json out when verbose is off
 [ ] default: verbose should be false
 [x] all messages have a message header - look for it & ignore it properly
