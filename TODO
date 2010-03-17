@@ -85,3 +85,5 @@
 [ ] listing output: show first 5 lines when on first line
 [ ] listing output: show last 5 lines when on last line
 [ ] listing output: show 2 lines of +/- context normally
+[ ] split up break into setbreakpoint + breakpoint
+[ ] sys.inspect objects before displaying them
