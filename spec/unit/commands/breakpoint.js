@@ -2,26 +2,9 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("Breakpoint", function() {
       before_each(function() {
-        connection = {
-          write: function() {}
-        };
-
-        commands = ndb.Commands;
-        commands.connection = connection;
-
         breakpoint = commands.Break;
-      });
 
-      it("should raw write the json with the filename + fileno", function() {
-        var obj = undefined;
-
-        ndb.Commands.RawWrite = {
-          run: function(o) {
-            obj = o;
-          }
-        };
-
-        var expected_object = {
+        expected_object = {
           type:    "request",
           command: "setbreakpoint",
           arguments: {
@@ -31,38 +14,51 @@ describe("NodeDebugger", function() {
           }
         };
 
-        breakpoint.run("filename.js", 17);
+        obj = {};
 
-        JSON.stringify(obj).should.equal(JSON.stringify(expected_object));
+        spy.stub(ndb.Commands.RawWrite, "run", function(arg) {
+          obj = arg;
+        });
+      });
+
+      it("should raw write the json with the filename + fileno", function() {
+        breakpoint.run({filename: "filename.js", lineNumber: 17});
+        _.isEqual(obj, expected_object).should.be(true);
       });
 
       it('should use the correct filename + lineno', function() {
-        var obj = undefined;
-
-        ndb.Commands.RawWrite = {
-          run: function(o) {
-            obj = o;
-          }
-        };
-
-        var expected_object = {
-          type:    "request",
-          command: "setbreakpoint",
-          arguments: {
-            type:   "script",
-            target: "foo.js",
-            line:   20
-          }
-        };
-
-        breakpoint.run("foo.js", 20);
-
-        JSON.stringify(obj).should.equal(JSON.stringify(expected_object));
+        breakpoint.run({filename: "foo.js", lineNumber: 20});
+        obj.arguments.target.should.equal("foo.js");
+        obj.arguments.line.should.equal(20);
       });
 
-      it("should be able set a breakpoint with a number in the current filename", function() {});
+      it("should use the current filename if none is provided", function() {
+        ndb.State.filename = "/my/filename.js";
 
-      it("should be able to set a breakpoint with a function name", function() {});
+        breakpoint.run({lineNumber: 20});
+
+        obj.arguments.target.should.equal("/my/filename.js");
+        obj.arguments.line.should.equal(20);
+      });
+
+      it("should use the current line number + filename if none provided", function() {
+        ndb.State.filename = "/foo/bar.js";
+        ndb.State.lineNumber = 10;
+
+        breakpoint.run();
+        obj.arguments.target.should.equal("/foo/bar.js");
+        obj.arguments.line.should.equal(10);
+      });
+
+      it("should use line 1 if line number is not set", function() {
+        breakpoint.run();
+        obj.arguments.line.should.equal(1);
+      });
+
+      it("should not set the filename if not set (either globally or passed)", function() {
+        breakpoint.run();
+        obj.arguments.target.should.equal(null);
+      });
     });
   });
 });
