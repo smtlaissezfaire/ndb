@@ -4,8 +4,8 @@ describe('NodeDebugger', function() {
       ndb.State.filename.should.equal(null);
     });
 
-    it("should have the line number as 1", function() {
-      ndb.State.lineNumber.should.equal(1);
+    it("should have the line number as null", function() {
+      ndb.State.lineNumber.should.equal(null);
     });
 
     it("should reset properly", function() {
@@ -15,7 +15,7 @@ describe('NodeDebugger', function() {
       ndb.reset();
 
       ndb.State.filename.should.equal(null);
-      ndb.State.lineNumber.should.equal(1);
+      ndb.State.lineNumber.should.equal(null);
     });
   });
 });

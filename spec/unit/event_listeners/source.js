@@ -83,6 +83,22 @@ describe("NodeDebugger", function() {
 
         (/function\(\) \{/).test(out).should.be(true);
       });
+
+      it("should display an arrow next to the current breakpoint line", function() {
+        var lines = obj.body.source.split("\n");
+
+        ndb.State.lineNumber = 3;
+
+        var expected_output = "";
+        expected_output += "   1 " + lines[0] + "\n";
+        expected_output += "   2 " + lines[1] + "\n";
+        expected_output += "=> 3 " + lines[2] + "\n";
+        expected_output += "   4 " + lines[3] + "\n";
+
+        event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
+
+        out.should.equal(expected_output);
+      });
     });
   });
 });
