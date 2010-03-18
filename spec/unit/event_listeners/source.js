@@ -99,6 +99,23 @@ describe("NodeDebugger", function() {
 
         out.should.equal(expected_output);
       });
+
+      it("should not display empty undefined lines", function() {
+        obj.body.fromLine = 9;
+        obj.body.toLine   = 13;
+
+        var lines = obj.body.source.split("\n");
+
+        var expected_output = "";
+        expected_output += "   10 " + lines[0] + "\n";
+        expected_output += "   11 " + lines[1] + "\n";
+        expected_output += "   12 " + lines[2] + "\n";
+        expected_output += "   13 " + lines[3] + "\n";
+
+        event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
+
+        out.should.equal(expected_output);
+      });
     });
   });
 });
