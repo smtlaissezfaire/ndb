@@ -71,7 +71,7 @@ describe("NodeDebugger", function() {
 
         result[0].should.equal(ndb.Commands.Break);
         result[1].filename.should.equal("/foo/bar.js");
-        result[1].lineNumber.should.equal("10");
+        result[1].lineNumber.should.equal(10);
       });
 
       it("should return the null + linenumber when only a number is specified", function() {
@@ -79,7 +79,7 @@ describe("NodeDebugger", function() {
 
         result[0].should.equal(ndb.Commands.Break);
         result[1].filename.should.equal(undefined);
-        result[1].lineNumber.should.equal("10");
+        result[1].lineNumber.should.equal(10);
       });
 
       it("should parse version as the version", function() {
