@@ -27,8 +27,8 @@ describe("NodeDebugger", function() {
           type:    "request",
           command: "source",
           arguments: {
-            "fromLine": 1,
-            "toLine":   6
+            "fromLine": 0,
+            "toLine":   5
           }
         };
 
@@ -44,8 +44,8 @@ describe("NodeDebugger", function() {
           list.run();
 
           spy.intercepted(writer, "run", function(obj) {
-            obj["arguments"].fromLine.should.equal(10);
-            obj["arguments"].toLine.should.equal(15);
+            obj["arguments"].fromLine.should.equal(9);
+            obj["arguments"].toLine.should.equal(14);
           });
         });
       });
