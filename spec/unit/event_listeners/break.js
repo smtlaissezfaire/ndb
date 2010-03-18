@@ -109,22 +109,42 @@ describe("NodeDebugger", function() {
       //               "breakpoints"    : <array of break point numbers hit if any>
       //             }
       // }
+      //
+      // {
+      //   "seq":6,
+      //   "type":"event",
+      //   "event":"break",
+      //   "body":{
+      //     "invocationText":"#<an Object>.[anonymous](exports=#<an Object>, require=function require(path) {\n return loadModule(path, self);\n }, module=#<a Module>, __filename=/Users/scotttaylor/src/git/ndb/lib/ndb.js, __dirname=/
+      //     "sourceLine":5,
+      //     "sourceColumn":12,
+      //     "sourceLineText":"ndb.version = \"0.0.1\";",
+      //     "script":{
+      //       "id":18,
+      //       "name":"/Users/scotttaylor/src/git/ndb/lib/ndb.js",
+      //       "lineOffset":0,
+      //       "columnOffset":0,
+      //       "lineCount":255
+      //     },
+      //     "breakpoints":[1]
+      //   }
+      // }
       it("should store the filename + line number", function() {
         var json = JSON.stringify({
           seq: 1,
           type: "event",
           event: "break",
           body: {
+            sourceLine: 30,
             script: {
-              name: "foo.js",
-              lineOffset: 30
+              name: "foo.js"
             }
           }
         });
 
         event_listner.receive(SpecHelpers.makeResponse(json));
         ndb.State.filename.should.equal("foo.js");
-        ndb.State.lineNumber.should.equal(31);
+        ndb.State.lineNumber.should.equal(30);
       });
 
       it("should set the line number when it is 0 to 1 (we get back lineOffset, but we want to know it's true line number)", function() {
@@ -133,15 +153,15 @@ describe("NodeDebugger", function() {
           type: "event",
           event: "break",
           body: {
+            sourceLine: 0,
             script: {
-              name: "foo.js",
-              lineOffset: 0
+              name: "foo.js"
             }
           }
         });
 
         event_listner.receive(SpecHelpers.makeResponse(json));
-        ndb.State.lineNumber.should.equal(1);
+        ndb.State.lineNumber.should.equal(0);
       });
     });
   });
