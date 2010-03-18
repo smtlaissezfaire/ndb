@@ -126,6 +126,23 @@ describe("NodeDebugger", function() {
         ndb.State.filename.should.equal("foo.js");
         ndb.State.lineNumber.should.equal(30);
       });
+
+      it("should set the line number when it is 0", function() {
+        var json = JSON.stringify({
+          seq: 1,
+          type: "event",
+          event: "break",
+          body: {
+            script: {
+              name: "foo.js",
+              lineOffset: 0
+            }
+          }
+        });
+
+        event_listner.receive(SpecHelpers.makeResponse(json));
+        ndb.State.lineNumber.should.equal(0);
+      });
     });
   });
 });
