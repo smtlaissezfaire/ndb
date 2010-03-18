@@ -59,26 +59,32 @@ describe("NodeDebugger", function() {
       });
 
       it("should parse 'break' as a break command", function() {
-        command_center.parse("break")[0].should.equal(ndb.Commands.Break);
+        var result = command_center.parse("break");
+
+        result[0].should.equal(ndb.Commands.Break);
+        result[1].filename.should.equal(undefined);
+        result[1].lineNumber.should.equal(undefined);
+      });
+
+      it("should return a list of filename:linenumber when specified in that format", function() {
+        var result = command_center.parse("break /foo/bar.js:10");
+
+        result[0].should.equal(ndb.Commands.Break);
+        result[1].filename.should.equal("/foo/bar.js");
+        result[1].lineNumber.should.equal("10");
+      });
+
+      it("should return the null + linenumber when only a number is specified", function() {
+        var result = command_center.parse("break 10");
+
+        result[0].should.equal(ndb.Commands.Break);
+        result[1].filename.should.equal(undefined);
+        result[1].lineNumber.should.equal("10");
       });
 
       it("should parse version as the version", function() {
         var parse = command_center.parse("version");
         parse[0].should.equal(ndb.Commands.Version);
-      });
-
-      it('should parse break with one arg', function() {
-        var parse = command_center.parse("break 10");
-
-        parse[0].should.equal(ndb.Commands.Break);
-        parse[1].toString().should.equal(["10"].toString());
-      });
-
-      it("should parse a break with multiple args", function() {
-        var parse = command_center.parse("break foo.js 10");
-
-        parse[0].should.equal(ndb.Commands.Break);
-        parse[1].toString().should.equal(["foo.js", "10"].toString());
       });
     });
 
