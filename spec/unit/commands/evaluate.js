@@ -21,7 +21,7 @@ describe("NodeDebugger", function() {
 
         it("should raw write with the expression", function() {
           spy.spyOn(raw_write, function() {
-            evaluator.run("1+2");
+            evaluator.run("1+2", true);
             spy.intercepted(raw_write, "run", function(obj) {
               obj.type.should.equal("request");
               obj.command.should.equal("evaluate");
@@ -32,10 +32,30 @@ describe("NodeDebugger", function() {
 
         it("should use the correct expression", function() {
           spy.spyOn(raw_write, function() {
-            evaluator.run("a()");
+            evaluator.run("a()", true);
 
             spy.intercepted(raw_write, "run", function(obj) {
               obj.arguments.expression.should.equal("a()");
+            });
+          });
+        });
+
+        it("should inspect when given a false arg", function() {
+          spy.spyOn(raw_write, function() {
+            evaluator.run("a()", false);
+
+            spy.intercepted(raw_write, "run", function(obj) {
+              obj.arguments.expression.should.equal("require('sys').inspect(a());");
+            });
+          });
+        });
+
+        it("should inspect when given no second arg", function() {
+          spy.spyOn(raw_write, function() {
+            evaluator.run("a()");
+
+            spy.intercepted(raw_write, "run", function(obj) {
+              obj.arguments.expression.should.equal("require('sys').inspect(a());");
             });
           });
         });
