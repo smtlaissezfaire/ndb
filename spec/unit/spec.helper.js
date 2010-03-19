@@ -66,6 +66,7 @@ JSpec.include({
   beforeSpec: function() {
     ndb = require("ndb");
     ndb.reset();
+    ndb.Commands.List.context = 2;
 
     connection = {
       setEncoding: function() {},

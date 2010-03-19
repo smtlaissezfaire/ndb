@@ -52,7 +52,8 @@ describe("NodeDebugger", function() {
 
       describe("context", function() {
         it("should have the default of 2", function() {
-          list.context.should.equal(2);
+          list.reset();
+          list.context.should.equal(4);
         });
       });
 
