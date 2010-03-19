@@ -4,3 +4,6 @@
 [submodule "spec/underscore"]
 	path = spec/underscore
 	url = git://github.com/documentcloud/underscore.git
+[submodule "spec/jspec"]
+	path = spec/jspec
+	url = git://github.com/visionmedia/jspec.git
