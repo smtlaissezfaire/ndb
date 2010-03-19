@@ -82,6 +82,14 @@ describe("NodeDebugger", function() {
         result[1].lineNumber.should.equal(10);
       });
 
+      it("should use the b command with arguments", function() {
+        var result = command_center.parse("b 10");
+
+        result[0].should.equal(ndb.Commands.Break);
+        result[1].filename.should.equal(undefined);
+        result[1].lineNumber.should.equal(10);
+      });
+
       it("should parse version as the version", function() {
         var parse = command_center.parse("version");
         parse[0].should.equal(ndb.Commands.Version);
