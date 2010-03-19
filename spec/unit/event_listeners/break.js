@@ -94,6 +94,24 @@ describe("NodeDebugger", function() {
         out.search(regex).should.not.equal(-1);
       });
 
+      it("should pretty format the code", function() {
+        var json = {
+          "seq":117,
+          "type":"event",
+          "event":"break",
+          "body": {
+            "functionName":"f",
+            "sourceLine":0,
+            "sourceColumn":14,
+            "sourceLineText":"foo() {};"
+          }
+        };
+
+        event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(json)));
+
+        out.should.equal("Breakpoint at 1:14 (in function f)\nfoo() {};");
+      });
+
       // { "seq"   : <number>,
       //   "type"  : "event",
       //
