@@ -1,8 +1,7 @@
 require("./espionage/lib/espionage");
 require("./underscore/underscore");
-require.paths.unshift('spec', '/Users/scotttaylor/.rvm/gems/ruby/1.8.6/gems/jspec-3.3.2/lib', 'lib');
-require('jspec');
-require('unit/spec.helper');
+require('./jspec/lib/jspec');
+require('./unit/spec.helper');
 
 require.paths.unshift("./../lib");
 
