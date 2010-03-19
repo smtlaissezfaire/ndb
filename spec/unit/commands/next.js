@@ -60,6 +60,7 @@ describe("NodeDebugger", function() {
               obj.type.should.equal("request");
               obj.command.should.equal("continue");
               obj.arguments.stepaction.should.equal("next");
+              obj.arguments.stepcount.should.equal(1);
             });
           });
         });
