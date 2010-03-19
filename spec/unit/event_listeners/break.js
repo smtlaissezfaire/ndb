@@ -144,7 +144,7 @@ describe("NodeDebugger", function() {
 
         event_listner.receive(SpecHelpers.makeResponse(json));
         ndb.State.filename.should.equal("foo.js");
-        ndb.State.lineNumber.should.equal(30);
+        ndb.State.lineNumber.should.equal(31);
       });
 
       it("should set the line number when it is 0 to 1 (we get back lineOffset, but we want to know it's true line number)", function() {
@@ -161,7 +161,7 @@ describe("NodeDebugger", function() {
         });
 
         event_listner.receive(SpecHelpers.makeResponse(json));
-        ndb.State.lineNumber.should.equal(0);
+        ndb.State.lineNumber.should.equal(1);
       });
     });
   });
