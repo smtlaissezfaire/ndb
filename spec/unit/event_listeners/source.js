@@ -62,7 +62,7 @@ describe("NodeDebugger", function() {
         expected_output += "   1 " + lines[0] + "\n";
         expected_output += "   2 " + lines[1] + "\n";
         expected_output += "   3 " + lines[2] + "\n";
-        expected_output += "   4 " + lines[3] + "\n";
+        expected_output += "   4 " + lines[3];
 
         event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
 
@@ -93,7 +93,7 @@ describe("NodeDebugger", function() {
         expected_output += "   1 " + lines[0] + "\n";
         expected_output += "   2 " + lines[1] + "\n";
         expected_output += "=> 3 " + lines[2] + "\n";
-        expected_output += "   4 " + lines[3] + "\n";
+        expected_output += "   4 " + lines[3];
 
         event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
 
@@ -110,7 +110,7 @@ describe("NodeDebugger", function() {
         expected_output += "   10 " + lines[0] + "\n";
         expected_output += "   11 " + lines[1] + "\n";
         expected_output += "   12 " + lines[2] + "\n";
-        expected_output += "   13 " + lines[3] + "\n";
+        expected_output += "   13 " + lines[3];
 
         event_listner.receive(SpecHelpers.makeResponse(JSON.stringify(obj)));
 
