@@ -4,9 +4,9 @@ describe("Node Debugger", function() {
       ndb.version.should.equal("0.0.1");
     });
 
-    it("should have verbose on by default", function() {
+    it("should have verbose off by default", function() {
       ndb.reset();
-      ndb.verbose.should.equal(true);
+      ndb.verbose.should.equal(false);
     });
   });
 });
