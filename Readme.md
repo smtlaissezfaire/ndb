@@ -11,8 +11,8 @@ For an idea of it's current progress:
 
 ## Running Unit tests:
 
-git submodule update --init
-node spec/node.js
+        git submodule update --init
+        node spec/node.js
 
 ## License
 
