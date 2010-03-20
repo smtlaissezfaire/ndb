@@ -5,7 +5,13 @@ task :jsl do
     puts `jsl -process #{filename}`
   end
 
-  Dir.glob("**/*.js").each do |file|
+  files = [
+    Dir.glob("lib/**/*.js"),
+    Dir.glob("spec/unit/**/*.js"),
+    "spec/node.js"
+  ].flatten
+
+  files.each do |file|
     unless file =~ /vendor/
       jsl_file(file)
     end
