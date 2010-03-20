@@ -7,15 +7,15 @@ describe("NodeDebugger", function() {
 
       describe("parsing", function() {
         it("should not parse with random text", function() {
-          backtrace.parse("fooasdfasd").should.equal(undefined);
+          backtrace.parseCommand("fooasdfasd").should.equal(undefined);
         });
 
         it("should parse bt", function() {
-          backtrace.parse("bt")[0].should.equal(backtrace);
+          backtrace.parseCommand("bt")[0].should.equal(backtrace);
         });
 
         it("should parse backtrace", function() {
-          backtrace.parse("backtrace")[0].should.equal(backtrace);
+          backtrace.parseCommand("backtrace")[0].should.equal(backtrace);
         });
       });
 

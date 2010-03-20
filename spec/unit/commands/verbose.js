@@ -8,11 +8,11 @@ describe("NodeDebugger", function() {
 
       describe("parsing", function() {
         it("should parse 'verbose'", function() {
-          verbose.parse("verbose")[0].should.equal(verbose);
+          verbose.parseCommand("verbose")[0].should.equal(verbose);
         });
 
         it("should not parse a random string", function() {
-          verbose.parse("asdfasdfa").should.be(undefined);
+          verbose.parseCommand("asdfasdfa").should.be(undefined);
         });
       });
 

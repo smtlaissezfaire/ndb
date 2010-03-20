@@ -33,7 +33,7 @@ describe("NodeDebugger", function() {
       });
 
       it("should parse 'quit' as quit", function() {
-        quitter.parse("quit")[0].should.equal(quitter);
+        quitter.parseCommand("quit")[0].should.equal(quitter);
       });
     });
   });

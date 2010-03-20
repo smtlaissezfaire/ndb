@@ -27,11 +27,11 @@ describe("NodeDebugger", function() {
       });
 
       it("should parse 'version' as the version", function() {
-        version.parse("version")[0].should.equal(version);
+        version.parseCommand("version")[0].should.equal(version);
       });
 
       it("should not parse 'foo'", function() {
-        version.parse("foo").should.equal(undefined);
+        version.parseCommand("foo").should.equal(undefined);
       });
     });
   });

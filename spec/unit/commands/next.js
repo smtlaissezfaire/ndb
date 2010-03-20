@@ -7,30 +7,30 @@ describe("NodeDebugger", function() {
 
       describe("parsing", function() {
         it("should parse 'n' as next", function() {
-          next.parse("n")[0].should.equal(next);
+          next.parseCommand("n")[0].should.equal(next);
         });
 
         it("should be a parse failure with random text", function() {
-          next.parse("adsfadsf").should.be(undefined);
+          next.parseCommand("adsfadsf").should.be(undefined);
         });
 
         it("should parse 'next' as next", function() {
-          next.parse("next")[0].should.equal(next);
+          next.parseCommand("next")[0].should.equal(next);
         });
 
         it("should not have a second argument if not given one", function() {
-          // var result = next.parse("next");
+          // var result = next.parseCommand("next");
           // result.length.should.equal(1);
         });
 
         it("should parse n 10 as [next, 10]", function() {
-          var result = next.parse("n 10");
+          var result = next.parseCommand("n 10");
           result[0].should.equal(next);
           result[1].should.equal("10");
         });
 
         it("should use the correct arguments when parsing", function() {
-          var result = next.parse("n 2");
+          var result = next.parseCommand("n 2");
           result[0].should.equal(next);
           result[1].should.equal("2");
         });

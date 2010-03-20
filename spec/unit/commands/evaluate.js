@@ -100,28 +100,28 @@ describe("NodeDebugger", function() {
 
       describe("parse", function() {
         it("should parse 'e' with a statement", function() {
-          var e = evaluator.parse("e foo");
+          var e = evaluator.parseCommand("e foo");
           e[0].should.equal(evaluator);
           e[1].should.equal("foo");
         });
 
         it("should parse 'eval' with a statement", function() {
-          _.isEqual(evaluator.parse("eval foo"), [evaluator, "foo"]).should.be(true);
+          _.isEqual(evaluator.parseCommand("eval foo"), [evaluator, "foo"]).should.be(true);
         });
 
         it("should render the correct text", function() {
-          var e = evaluator.parse("e {}");
+          var e = evaluator.parseCommand("e {}");
           e[0].should.equal(evaluator);
           e[1].should.equal("{}");
         });
 
         it("should parse 'print' with some text", function() {
-          var e = evaluator.parse("print {}");
+          var e = evaluator.parseCommand("print {}");
           e[0].should.equal(evaluator);
         });
 
         it("should parse 'p' with some text", function() {
-          var e = evaluator.parse("p 1");
+          var e = evaluator.parseCommand("p 1");
           e[0].should.equal(evaluator);
         });
       });
