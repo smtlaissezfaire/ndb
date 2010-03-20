@@ -106,7 +106,7 @@ describe("NodeDebugger", function() {
         });
 
         it("should parse 'eval' with a statement", function() {
-          evaluator.parse("eval foo").toString().should.equal([evaluator, "foo"].toString());
+          _.isEqual(evaluator.parse("eval foo"), [evaluator, "foo"]).should.be(true);
         });
 
         it("should render the correct text", function() {
@@ -117,6 +117,11 @@ describe("NodeDebugger", function() {
 
         it("should parse 'print' with some text", function() {
           var e = evaluator.parse("print {}");
+          e[0].should.equal(evaluator);
+        });
+
+        it("should parse 'p' with some text", function() {
+          var e = evaluator.parse("p 1");
           e[0].should.equal(evaluator);
         });
       });
