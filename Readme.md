@@ -9,6 +9,11 @@ For an idea of it's current progress:
 
   [http://gist.github.com/317535](http://gist.github.com/317535)
 
+## Running Unit tests:
+
+git submodule update --init
+node spec/node.js
+
 ## License
 
 (The MIT License)
