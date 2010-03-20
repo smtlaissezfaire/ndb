@@ -1,13 +1,92 @@
 
 # ndb - the node debugger
 
-This is still in super-alpha.  I wouldn't try to use it for anything at all
-unless you enjoy feeling the pain of writing in the
-[v8 debugger protocol](http://code.google.com/p/v8/wiki/DebuggerProtocol)
+A command line node.js/v8 debugger.  It still in alpha;
+don't expect all of your favorite debugger commands to
+work quite as expected.
 
-For an idea of it's current progress:
+## Usage:
 
-  [http://gist.github.com/317535](http://gist.github.com/317535)
+### Starting it up:
+
+    $ node --debug-brk my_js.js
+    debugger listening on port 5858
+    Waiting for remote debugger connection...
+
+    $ ./bin/ndb
+
+### An example session:
+
+    hopcroft:ndb(master) scotttaylor$ ./bin/ndb
+    welcome to the node debugger!
+    ndb> ndb> list
+       1 (function (process) {
+       2
+       3 process.global.process = process;
+       4 process.global.global = process.global;
+       5 global.GLOBAL = global;
+       6
+       7 /** deprecation errors ************************************************/
+       8
+       9 function removed (reason) {
+    ndb> Breakpoint at 1:10 (in function undefined)
+    (function (exports, require, module, __filename, __dirname) { var sys = require("sys"),
+    ndb> list
+    => 1 (function (exports, require, module, __filename, __dirname) { var sys = require("sys"),
+       2     tcp = require("tcp");
+       3
+       4 var ndb = exports;
+       5
+       6 ndb.version = "0.1.0";
+       7
+       8 ndb.reset = function() {
+       9   this.port    = 5858;
+    ndb> break 5
+    ndb> continue
+    ndb> ndb> Breakpoint at 6:12 (in function undefined - breakpoints: [1])
+    ndb.version = "0.1.0";
+    ndb> list
+       2     tcp = require("tcp");
+       3
+       4 var ndb = exports;
+       5
+    => 6 ndb.version = "0.1.0";
+       7
+       8 ndb.reset = function() {
+       9   this.port    = 5858;
+       10   this.verbose = false;
+    ndb> e ndb
+    => {}
+    ndb> n
+    ndb> ndb> Breakpoint at 8:10 (in function undefined)
+    ndb.reset = function() {
+    ndb> list
+       4 var ndb = exports;
+       5
+       6 ndb.version = "0.1.0";
+       7
+    => 8 ndb.reset = function() {
+       9   this.port    = 5858;
+       10   this.verbose = false;
+       11
+       12   this.State.reset();
+    ndb> e ndb
+    => { version: '0.1.0' }
+    ndb> help
+    b, break
+    bt, backtrace
+    c, continue
+    e, eval, p, print
+    h, help
+    l, list
+    n, next
+    quit
+    rw
+    verbose
+    version
+    ndb> quit
+    bye!
+
 
 ## Running Unit tests:
 
