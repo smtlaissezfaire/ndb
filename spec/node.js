@@ -24,7 +24,7 @@ JSpec.
   exec('spec/unit/commands/help.js').
   exec('spec/unit/commands/list.js').
   exec('spec/unit/commands/continue.js').
-  exec('spec/unit/commands/breakpoint.js').
+  exec('spec/unit/commands/setbreakpoint.js').
   exec('spec/unit/commands/quit.js').
   exec('spec/unit/commands/version.js').
   exec('spec/unit/commands/evaluate.js').
