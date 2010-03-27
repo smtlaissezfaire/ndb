@@ -55,13 +55,13 @@ describe("NodeDebugger", function() {
       });
 
       it("should parse 'b' as a break command", function() {
-        command_center.parse("b")[0].should.equal(ndb.Commands.Break);
+        command_center.parse("b")[0].should.equal(ndb.Commands.SetBreakpoint);
       });
 
       it("should parse 'break' as a break command", function() {
         var result = command_center.parse("break");
 
-        result[0].should.equal(ndb.Commands.Break);
+        result[0].should.equal(ndb.Commands.SetBreakpoint);
         result[1].filename.should.equal(undefined);
         result[1].lineNumber.should.equal(undefined);
       });
@@ -69,7 +69,7 @@ describe("NodeDebugger", function() {
       it("should return a list of filename:linenumber when specified in that format", function() {
         var result = command_center.parse("break /foo/bar.js:10");
 
-        result[0].should.equal(ndb.Commands.Break);
+        result[0].should.equal(ndb.Commands.SetBreakpoint);
         result[1].filename.should.equal("/foo/bar.js");
         result[1].lineNumber.should.equal(10);
       });
@@ -77,7 +77,7 @@ describe("NodeDebugger", function() {
       it("should return the null + linenumber when only a number is specified", function() {
         var result = command_center.parse("break 10");
 
-        result[0].should.equal(ndb.Commands.Break);
+        result[0].should.equal(ndb.Commands.SetBreakpoint);
         result[1].filename.should.equal(undefined);
         result[1].lineNumber.should.equal(10);
       });
@@ -85,7 +85,7 @@ describe("NodeDebugger", function() {
       it("should use the b command with arguments", function() {
         var result = command_center.parse("b 10");
 
-        result[0].should.equal(ndb.Commands.Break);
+        result[0].should.equal(ndb.Commands.SetBreakpoint);
         result[1].filename.should.equal(undefined);
         result[1].lineNumber.should.equal(10);
       });

@@ -2,7 +2,7 @@ describe("NodeDebugger", function() {
   describe("Commands", function() {
     describe("Breakpoint", function() {
       before_each(function() {
-        breakpoint = commands.Break;
+        breakpoint = commands.SetBreakpoint;
 
         expected_object = {
           type:    "request",
