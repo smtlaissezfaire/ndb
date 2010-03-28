@@ -23,4 +23,4 @@ task :spec do
   sh "node spec/node.js"
 end
 
-task :default => :jsl
+task :default => [:jsl, :spec]
