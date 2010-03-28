@@ -93,6 +93,10 @@ work quite as expected.
     git submodule update --init
     node spec/node.js
 
+## Node version:
+
+ndb's specs run against node v0.1.33
+
 ## License
 
     ndb - the node.js command line debugger
