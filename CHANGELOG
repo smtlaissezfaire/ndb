@@ -1,4 +1,15 @@
 
+HEAD
+----
+
+* Add confirmation for setting a breakpoint:
+
+  ndb> break 6
+  Breakpoint 1 set at /Users/scotttaylor/src/git/ndb/spec/node.js:6
+  ndb> break 7
+  ndb> Breakpoint 2 set at /Users/scotttaylor/src/git/ndb/spec/node.js:7
+
+
 0.1.0 / 2010-03-20
 ------------------
 
