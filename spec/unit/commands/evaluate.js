@@ -45,7 +45,7 @@ describe("NodeDebugger", function() {
             evaluator.run("a()", false);
 
             spy.intercepted(raw_write, "run", function(obj) {
-              obj.arguments.expression.should.equal("require('sys').inspect(a());");
+              obj.arguments.expression.should.equal(evaluator.__testing.construct_expression("a()"));
             });
           });
         });
@@ -55,7 +55,7 @@ describe("NodeDebugger", function() {
             evaluator.run("a()");
 
             spy.intercepted(raw_write, "run", function(obj) {
-              obj.arguments.expression.should.equal("require('sys').inspect(a());");
+              obj.arguments.expression.should.equal(evaluator.__testing.construct_expression("a()"));
             });
           });
         });
