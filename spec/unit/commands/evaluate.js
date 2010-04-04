@@ -96,6 +96,25 @@ describe("NodeDebugger", function() {
             });
           });
         });
+
+        // verbose: >>> Content-Length: 132
+        // verbose: >>>
+        // verbose: >>> {"type":"request","command":"evaluate","arguments":{"expression":"try { require('sys').inspect(require); } catch (_) { require }"}}
+        // verbose: >>>
+        // verbose: <<< Content-Length: 132
+        // verbose: <<<
+        // verbose: <<< {"seq":53,"type":"response","command":"evaluate","success":false,"message":"ReferenceError: require is not defined","running":false}
+        it("should display an error", function() {
+          var json = '{"seq":53,"type":"response","command":"evaluate","success":false,"message":"ReferenceError: require is not defined","running":false}';
+
+          spy.spyOn(ndb.Helpers, function() {
+            event_listner.receive(SpecHelpers.makeResponse(json));
+
+            spy.intercepted(ndb.Helpers, "puts", function(text) {
+              text.should.equal("ReferenceError: require is not defined");
+            });
+          });
+        });
       });
 
       describe("parse", function() {
