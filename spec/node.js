@@ -1,3 +1,4 @@
+require("./jspec_dot_reporter/jspec_dot_reporter");
 require("./espionage/lib/espionage");
 require("./underscore/underscore");
 require('./jspec/lib/jspec');
@@ -33,5 +34,5 @@ JSpec.
   exec('spec/unit/commands/backtrace.js').
   exec('spec/unit/message_parser.js').
   exec('spec/unit/state.js').
-  run({ reporter: SpecHelpers.JSpec.DotReporter, fixturePath: 'spec/fixtures' }).
+  run({ reporter: JSpecDotReporter, fixturePath: 'spec/fixtures' }).
   report();
