@@ -94,6 +94,21 @@ describe("NodeDebugger", function() {
         var parse = command_center.parse("version");
         parse[0].should.equal(ndb.Commands.Version);
       });
+
+      it("should parse stepin as a step in command", function() {
+        var parse = command_center.parse("stepin");
+        parse[0].should.equal(ndb.Commands.StepIn);
+      });
+
+      it("should parse step as a step in command", function() {
+        var parse = command_center.parse("step");
+        parse[0].should.equal(ndb.Commands.StepIn);
+      });
+
+      it("should parse s in as a step in command", function() {
+        var parse = command_center.parse("s");
+        parse[0].should.equal(ndb.Commands.StepIn);
+      });
     });
 
     describe("loop", function() {
