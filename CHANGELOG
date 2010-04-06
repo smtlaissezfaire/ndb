@@ -2,8 +2,10 @@
 HEAD
 ----
 
-* Add confirmation for setting a breakpoint:
-
+- Add step (stepin)
+- Improve eval support when require isn't defined
+- Display errors when eval throws an error
+- Add confirmation for setting a breakpoint:
   ndb> break 6
   Breakpoint 1 set at /Users/scotttaylor/src/git/ndb/spec/node.js:6
   ndb> break 7
@@ -13,8 +15,8 @@ HEAD
 0.1.0 / 2010-03-20
 ------------------
 
-* Initial release
-* Following commands are at least partially supported:
+- Initial release
+- Following commands are at least partially supported:
 
   * list source (on current line)
   * break points
@@ -22,7 +24,7 @@ HEAD
   * continue
   * eval / print
 
-* A few meta commands:
+- A few meta commands:
 
   * version
   * verbose (for showing the interaction with the debugging server)
