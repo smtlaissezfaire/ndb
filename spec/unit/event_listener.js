@@ -87,6 +87,29 @@ describe("NodeDebugger", function() {
           event_listner.buffer.should.equal(message2.slice(0, 10));
         });
       });
+
+      describe("when passed multiple, completed messages", function() {
+        before_each(function() {
+          obj1 = {"one": "two"};
+          obj2 = {"three": "four"};
+
+          message1 = SpecHelpers.makeResponse(JSON.stringify(obj1));
+          message2 = SpecHelpers.makeResponse(JSON.stringify(obj2));
+
+          text = message1;
+          text += message2;
+        });
+
+        it("should parse & run all of them", function() {
+          var received_objects = [];
+
+          event_listner.receive(text, function(obj) {
+            received_objects.push(obj);
+          });
+
+          _.isEqual(received_objects, [obj1, obj2]).should.be_true;
+        });
+      });
     });
   });
 });
