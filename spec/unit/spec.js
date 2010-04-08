@@ -21,6 +21,18 @@ describe('NodeDebugger', function() {
         text.search(/welcome to the node debugger!/).should.not.equal(-1);
       });
 
+      it("should output the prompt", function() {
+        var text = "";
+
+        ndb.Helpers.print = function(t) {
+          text += t;
+        };
+
+        ndb.start();
+
+        text.search(/ndb> /).should.not.equal(-1);
+      });
+
       it("should have the default port as 5858", function() {
         ndb.port.should.equal(5858);
       });
