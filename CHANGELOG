@@ -2,6 +2,8 @@
 HEAD
 ----
 
+- Fixed Bug #1 - "list command occasionally doesn't display code"
+  (http://github.com/smtlaissezfaire/ndb/issues/closed#issue/1)
 - Add step (stepin)
 - Improve eval support when require isn't defined
 - Display errors when eval throws an error
