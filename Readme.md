@@ -19,7 +19,7 @@ work quite as expected.
 
     hopcroft:ndb(master) scotttaylor$ ./bin/ndb
     welcome to the node debugger!
-    ndb> ndb> list
+    ndb> list
        1 (function (process) {
        2
        3 process.global.process = process;
@@ -30,48 +30,88 @@ work quite as expected.
        8
        9 function removed (reason) {
     ndb> Breakpoint at 1:10 (in function undefined)
-    (function (exports, require, module, __filename, __dirname) { var sys = require("sys"),
-    ndb> list
-    => 1 (function (exports, require, module, __filename, __dirname) { var sys = require("sys"),
-       2     tcp = require("tcp");
-       3
-       4 var ndb = exports;
-       5
-       6 ndb.version = "0.1.0";
-       7
-       8 ndb.reset = function() {
-       9   this.port    = 5858;
-    ndb> break 5
+    (function (exports, require, module, __filename, __dirname) { require("./jspec_dot_reporter/jspec_dot_reporter");
     ndb> continue
-    ndb> ndb> Breakpoint at 6:12 (in function undefined - breakpoints: [1])
-    ndb.version = "0.1.0";
+    Breakpoint at 2:8 (in function undefined)
+            debugger;
     ndb> list
-       2     tcp = require("tcp");
-       3
-       4 var ndb = exports;
-       5
-    => 6 ndb.version = "0.1.0";
-       7
-       8 ndb.reset = function() {
-       9   this.port    = 5858;
-       10   this.verbose = false;
-    ndb> e ndb
-    => {}
-    ndb> n
-    ndb> ndb> Breakpoint at 8:10 (in function undefined)
-    ndb.reset = function() {
+       1
+    => 2         debugger;
+       3         var result = grammar.parse([
+       4           [1, "_"]
+       5         ]);
+       6
+       7          expect(result).should(be_true)
+       8
+    ndb> next
+    Breakpoint at 3:29 (in function undefined)
+            var result = grammar.parse([
     ndb> list
-       4 var ndb = exports;
-       5
-       6 ndb.version = "0.1.0";
-       7
-    => 8 ndb.reset = function() {
-       9   this.port    = 5858;
-       10   this.verbose = false;
-       11
-       12   this.State.reset();
-    ndb> e ndb
-    => { version: '0.1.0' }
+       1
+       2         debugger;
+    => 3         var result = grammar.parse([
+       4           [1, "_"]
+       5         ]);
+       6
+       7          expect(result).should(be_true)
+       8
+    ndb> e grammar.parse([[1, "_"]])
+    RangeError: Maximum call stack size exceeded
+    ndb> list
+       1
+       2         debugger;
+    => 3         var result = grammar.parse([
+       4           [1, "_"]
+       5         ]);
+       6
+       7          expect(result).should(be_true)
+       8
+    ndb> step
+    Breakpoint at 98:13 (in function undefined)
+          return parseRule(startRule);
+    ndb> list
+       94   var obj = {
+       95     parse: function(tokens) {
+       96       token_index = 0;
+       97       tokensGiven = tokens;
+    => 98       return parseRule(startRule);
+       99     }
+       100   };
+       101
+       102   obj.__defineSetter__("rules",     function(val) { rules = val;     });
+    ndb> e startRule
+    => 'rule1'
+    ndb> e parseRule
+    => [Function]
+    ndb> step
+    Breakpoint at 60:4 (in function undefined)
+        var rule_body = rules[name],
+    ndb> list
+       56     return return_value;
+       57   };
+       58
+       59   var parseRule = function(name) {
+    => 60     var rule_body = rules[name],
+       61         return_value,
+       62         fun;
+       63
+       64     if (rule_body instanceof Array) {
+    ndb> next
+    Breakpoint at 64:4 (in function undefined)
+        if (rule_body instanceof Array) {
+    ndb>
+    Breakpoint at 65:33 (in function undefined)
+          var namePrefix = rule_body.shift(1);
+    ndb> list
+       61         return_value,
+       62         fun;
+       63
+       64     if (rule_body instanceof Array) {
+    => 65       var namePrefix = rule_body.shift(1);
+       66       fun = eval("parse" + namePrefix);
+       67       components = rule_body;
+       68     } else {
+       69       fun = parseNode;
     ndb> help
     b, break
     bt, backtrace
@@ -82,6 +122,7 @@ work quite as expected.
     n, next
     quit
     rw
+    s, step, stepin
     verbose
     version
     ndb> quit
