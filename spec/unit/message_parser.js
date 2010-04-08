@@ -12,11 +12,12 @@ describe("Node Debugger", function() {
     });
 
     describe("parsing an appropriate message", function() {
-      it("should have a message header and body", function() {
+      it("should have a message header, raw_header, and body", function() {
         var message = "A-Header: 1\r\n\r\n",
             parsed_message;
 
         parsed_message = parser.parse(message);
+        parsed_message.raw_headers.should.equal("A-Header: 1\r\n");
         parsed_message.headers.should.not.equal(null);
         parsed_message.body.should.not.equal(null);
       });
