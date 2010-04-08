@@ -59,6 +59,34 @@ describe("NodeDebugger", function() {
         event_listner.receive(SpecHelpers.makeResponse(message));
         event_listner.buffer.should.equal("");
       });
+
+      describe("when passed in the correct content-length, but more content", function() {
+        before_each(function() {
+          obj1 = {"one": "two"};
+          obj2 = {"three": "four"};
+
+          message1 = SpecHelpers.makeResponse(JSON.stringify(obj1));
+          message2 = SpecHelpers.makeResponse(JSON.stringify(obj2));
+
+          text = message1;
+          text += message2.slice(0, 10); // an arbitrary part of the second message
+        });
+
+        it("should parse only the json for the content-length given", function() {
+          var received_obj = "";
+
+          event_listner.receive(text, function(obj) {
+            received_obj = obj;
+          });
+
+          _.isEqual(received_obj, obj1).should.be_true;
+        });
+
+        it("should keep around the buffer for the next request", function() {
+          event_listner.receive(text);
+          event_listner.buffer.should.equal(message2.slice(0, 10));
+        });
+      });
     });
   });
 });
