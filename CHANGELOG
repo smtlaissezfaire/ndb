@@ -1,6 +1,8 @@
+HEAD
+----
 
-0.1.1
------
+0.1.1.1
+-------
 
 - Improved display of prompt (no additional prompts displayed)
 - Fixed Bug #1 - "list command occasionally doesn't display code"
