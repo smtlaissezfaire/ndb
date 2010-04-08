@@ -40,15 +40,27 @@ describe("NodeDebugger", function() {
       text.should.equal("verbose: <<< foo");
     });
 
-    it("should output the repl text", function() {
+    it("should not output the repl text after an unsuccessful parse", function() {
       var text = "";
-
       ndb.Helpers.print = function(t) {
         text += t;
       };
 
       ndb.verbose = true;
-      event_listner.receive("foo");
+      event_listner.receive(SpecHelpers.makeResponse("{}"));
+      text.search(/ndb\> /).should.equal(-1);
+    });
+
+    it("should output the repl text after the parse is successful and is a command that is recognized", function() {
+      var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":0,"sourceColumn":14}}';
+
+      var text = "";
+      ndb.Helpers.print = function(t) {
+        text += t;
+      };
+
+      ndb.verbose = true;
+      event_listner.receive(SpecHelpers.makeResponse(json));
       text.search(/ndb\> /).should.not.equal(-1);
     });
 
