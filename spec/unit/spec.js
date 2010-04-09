@@ -102,6 +102,22 @@ describe('NodeDebugger', function() {
         ndb.start();
         called.should.be(true);
       });
+
+      it("should listen for an end message", function() {
+        var args = [];
+
+        connection.addListener = function(msg, fun) {
+          if (msg === "end") {
+            args.push(msg);
+            args.push(fun);
+          }
+        };
+
+        ndb.start();
+
+        args[0].should.equal("end");
+        args[1].should.equal(ndb.Helpers.exit);
+      });
     });
   });
 });
