@@ -1,6 +1,9 @@
 HEAD
 ----
 
+- exit when the remote process is finished (instead of stalling and eventually raising an error)
+- add 'exit' as an alias for 'quit'
+
 0.1.1.1 / 2010-04-08
 -------
 
