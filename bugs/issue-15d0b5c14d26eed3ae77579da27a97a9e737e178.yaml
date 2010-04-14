@@ -3,7 +3,7 @@ title: backtrace
 desc: bt/backtrace doesn't output anything at all.  It should be smart and show file & line no's
 type: :feature
 component: ndb
-release: 
+release: 0.1.2
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :unstarted
 disposition: 
@@ -15,4 +15,8 @@ log_events:
 - - 2010-04-14 06:08:46.314303 Z
   - Scott Taylor <scott@railsnewbie.com>
   - created
+  - ""
+- - 2010-04-14 06:41:10.424713 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.1.2 from unassigned
   - ""

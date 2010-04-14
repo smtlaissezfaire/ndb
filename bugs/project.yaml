@@ -4,5 +4,13 @@ version: "0.5"
 components: 
 - !ditz.rubyforge.org,2008-03-06/component 
   name: ndb
-releases: []
-
+releases: 
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: 0.1.2
+  status: :unreleased
+  release_time: 
+  log_events: 
+  - - 2010-04-14 06:40:27.435513 Z
+    - Scott Taylor <scott@railsnewbie.com>
+    - created
+    - ""
