@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: stepout
+desc: chrome has a stepout feature.  Does it truely step out of the function call, returning to the outer scope?
+type: :task
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-04-14 06:27:37.144930 Z
+references: []
+
+id: 9f024e237aa0de2c3ec9844e34f57d28603c3e60
+log_events: 
+- - 2010-04-14 06:27:38.631745 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
