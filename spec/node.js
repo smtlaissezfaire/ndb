@@ -1,10 +1,11 @@
+require.paths.unshift("./lib/");
+
 require("./jspec_dot_reporter/jspec_dot_reporter");
 require("./espionage/lib/espionage");
 require("./underscore/underscore");
 require('./jspec/lib/jspec');
 require('./unit/spec.helper');
 
-require.paths.unshift("./../lib");
 
 spy = Espionage;
 
@@ -15,6 +16,7 @@ JSpec.include({
 });
 
 JSpec.
+  exec("spec/unit/node_spec.js").
   exec('spec/unit/spec.js').
   exec('spec/unit/ndb.js').
   exec('spec/unit/command_center.js').
