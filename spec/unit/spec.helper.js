@@ -27,14 +27,21 @@ JSpec.include({
 
     ndb.Helpers.tcp = tcp;
 
-    mock_stdio = {
-      openStdin: function() {},
+    stdinStream = {
       addListener: function() {}
     };
 
-    ndb.Helpers.stdio = mock_stdio;
-    ndb.Helpers.puts  = function() {};
-    ndb.Helpers.print = function() {};
+    mock_process = {
+      openStdin: function() {
+        return {
+          addListener: function() {}
+        };
+      }
+    };
+
+    ndb.Helpers.process = mock_process;
+    ndb.Helpers.puts    = function() {};
+    ndb.Helpers.print   = function() {};
   }
 });
 

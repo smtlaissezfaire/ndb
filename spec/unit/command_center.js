@@ -119,11 +119,14 @@ describe("NodeDebugger", function() {
         command_center.commands.connection.should.equal(command_center.connection);
       });
 
-      it('should open stdio', function() {
+      it('should open stdin', function() {
         opened = false;
 
-        mock_stdio.openStdin = function() {
+        mock_process.openStdin = function() {
           opened = true;
+          return {
+            addListener: function() {}
+          }
         };
 
         command_center.loop();
