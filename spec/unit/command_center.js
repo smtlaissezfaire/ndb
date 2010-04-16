@@ -112,6 +112,22 @@ describe("NodeDebugger", function() {
     });
 
     describe("loop", function() {
+      before_each(function() {
+        opened_stdin = false;
+        encoding_set_to = undefined;
+
+        mock_process.openStdin = function() {
+          opened_stdin = true;
+
+          return {
+            setEncoding: function(val) {
+              encoding_set_to = val;
+            },
+            addListener: function() {}
+          };
+        };
+      });
+
       it("should set the connection of the commands object", function() {
         command_center.connection = {};
 
@@ -120,18 +136,14 @@ describe("NodeDebugger", function() {
       });
 
       it('should open stdin', function() {
-        opened = false;
-
-        mock_process.openStdin = function() {
-          opened = true;
-          return {
-            addListener: function() {}
-          }
-        };
-
         command_center.loop();
-        opened.should.be(true);
+        opened_stdin.should.be(true);
       });
+
+      it("should set the encoding of stdin to ascii", function() {
+        command_center.loop();
+        encoding_set_to.should.equal("ascii");
+      })
 
       describe("storing a command", function() {
         it('should have the last command as null if no commands have been run', function() {

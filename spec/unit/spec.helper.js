@@ -34,6 +34,7 @@ JSpec.include({
     mock_process = {
       openStdin: function() {
         return {
+          setEncoding: function() {},
           addListener: function() {}
         };
       }
