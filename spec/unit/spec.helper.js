@@ -28,7 +28,7 @@ JSpec.include({
     ndb.Helpers.tcp = tcp;
 
     mock_stdio = {
-      open: function() {},
+      openStdin: function() {},
       addListener: function() {}
     };
 

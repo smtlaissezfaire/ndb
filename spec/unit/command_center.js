@@ -122,7 +122,7 @@ describe("NodeDebugger", function() {
       it('should open stdio', function() {
         opened = false;
 
-        mock_stdio.open = function() {
+        mock_stdio.openStdin = function() {
           opened = true;
         };
 
