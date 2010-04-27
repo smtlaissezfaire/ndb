@@ -7,10 +7,14 @@ components:
 releases: 
 - !ditz.rubyforge.org,2008-03-06/release 
   name: 0.1.2
-  status: :unreleased
-  release_time: 
+  status: :released
+  release_time: 2010-04-27 07:53:09.817074 Z
   log_events: 
   - - 2010-04-14 06:40:27.435513 Z
     - Scott Taylor <scott@railsnewbie.com>
     - created
     - ""
+  - - 2010-04-27 07:53:09.817084 Z
+    - Scott Taylor <scott@railsnewbie.com>
+    - released
+    - Compatiblity with node v0.1.91

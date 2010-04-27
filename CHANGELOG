@@ -1,6 +1,5 @@
-HEAD
-----
-
+== 0.1.2 / 2010-04-27
+- get ndb working with latest released version of node.js (0.1.91)
 - exit when the remote process is finished (instead of stalling and eventually raising an error)
 - add 'exit' as an alias for 'quit'
 
