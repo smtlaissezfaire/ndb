@@ -3,7 +3,7 @@ title: update version number
 desc: Update version number for 0.1.2 release (0.1.1 is lies)
 type: :task
 component: ndb
-release: 0.1.2
+release: 
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :unstarted
 disposition: 
@@ -15,4 +15,8 @@ log_events:
 - - 2010-04-14 06:43:33.384428 Z
   - Scott Taylor <scott@railsnewbie.com>
   - created
+  - ""
+- - 2010-04-27 07:52:29.307324 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - unassigned from release 0.1.2
   - ""
