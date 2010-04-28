@@ -136,7 +136,9 @@ work quite as expected.
 
 ## Node version:
 
-ndb's specs run against node v0.1.33
+Check the node compatibility page:
+
+http://wiki.github.com/ry/node/library-compatibility
 
 ## License
 
