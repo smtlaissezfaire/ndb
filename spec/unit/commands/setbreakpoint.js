@@ -10,7 +10,7 @@ describe("NodeDebugger", function() {
           arguments: {
             type:   "script",
             target: "filename.js",
-            line:   17
+            line:   16
           }
         };
 
@@ -29,7 +29,7 @@ describe("NodeDebugger", function() {
       it('should use the correct filename + lineno', function() {
         breakpoint.run({filename: "foo.js", lineNumber: 20});
         obj.arguments.target.should.equal("foo.js");
-        obj.arguments.line.should.equal(20);
+        obj.arguments.line.should.equal(19);
       });
 
       it("should use the current filename if none is provided", function() {
@@ -38,7 +38,7 @@ describe("NodeDebugger", function() {
         breakpoint.run({lineNumber: 20});
 
         obj.arguments.target.should.equal("/my/filename.js");
-        obj.arguments.line.should.equal(20);
+        obj.arguments.line.should.equal(19);
       });
 
       it("should use the current line number + filename if none provided", function() {
@@ -47,12 +47,12 @@ describe("NodeDebugger", function() {
 
         breakpoint.run();
         obj.arguments.target.should.equal("/foo/bar.js");
-        obj.arguments.line.should.equal(10);
+        obj.arguments.line.should.equal(9);
       });
 
       it("should use line 1 if line number is not set", function() {
         breakpoint.run();
-        obj.arguments.line.should.equal(1);
+        obj.arguments.line.should.equal(0);
       });
 
       it("should not set the filename if not set (either globally or passed)", function() {
@@ -130,7 +130,7 @@ describe("NodeDebugger", function() {
             event_listener.receive(SpecHelpers.makeResponse(JSON.stringify(msg)));
 
             spy.intercepted(ndb.Helpers, "puts", function(str) {
-              str.should.equal("Breakpoint 1 set at /Users/scotttaylor/src/git/ndb/spec/node.js:10");
+              str.should.equal("Breakpoint 1 set at /Users/scotttaylor/src/git/ndb/spec/node.js:11");
             });
           });
         });
@@ -143,7 +143,7 @@ describe("NodeDebugger", function() {
             event_listener.receive(SpecHelpers.makeResponse(JSON.stringify(msg)));
 
             spy.intercepted(ndb.Helpers, "puts", function(str) {
-              str.should.equal("Breakpoint 1 set at /foo.js:20");
+              str.should.equal("Breakpoint 1 set at /foo.js:21");
             });
           });
         });
