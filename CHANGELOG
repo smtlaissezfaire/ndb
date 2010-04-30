@@ -1,3 +1,6 @@
+== HEAD
+- fix off-by-one error when setting breakpoints (36f62560d62d653fde5bb789f38b172b2c6bdc0f)
+
 == 0.1.2 / 2010-04-27
 - get ndb working with latest released version of node.js (0.1.91)
 - exit when the remote process is finished (instead of stalling and eventually raising an error)
