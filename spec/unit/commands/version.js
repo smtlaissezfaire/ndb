@@ -17,7 +17,7 @@ describe("NodeDebugger", function() {
 
       it("should output the ndb + node version", function() {
         version.run();
-        puts_called_with[0].should.equal("ndb:          version 0.1.2");
+        puts_called_with[0].should.equal("ndb:          version 0.1.3");
         puts_called_with[1].should.equal("node (local): version " + process.version);
       });
 
