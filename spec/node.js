@@ -37,5 +37,6 @@ JSpec.
   exec('spec/unit/commands/backtrace.js').
   exec('spec/unit/message_parser.js').
   exec('spec/unit/state.js').
+  exec('spec/unit/option_parser/option_parser_spec.js').
   run({ reporter: JSpecDotReporter, fixturePath: 'spec/fixtures' }).
   report();
