@@ -120,5 +120,20 @@ describe("Option Parsing", function() {
         ndb.port.should.equal(1000);
       });
     });
+
+    describe("verbose", function() {
+      it("should parse --verbose", function() {
+        findLongOption("verbose").should.not.be_null;
+      });
+
+      it("should have a description", function() {
+        findLongOption("verbose").description.should.equal("Turn on verbose/debugging mode (default: off)");
+      });
+
+      it("should turn on verbosity", function() {
+        findLongOption("verbose").callback();
+        ndb.verbose.should.be(true);
+      });
+    });
   });
 });
