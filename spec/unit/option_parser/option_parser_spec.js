@@ -23,6 +23,13 @@ describe("Option Parsing", function() {
         });
       });
     });
+
+    it("should call ndb.start()", function() {
+      spy.spyOn(ndb, function() {
+        ndb.OptionParser.parse();
+        spy.intercepted(ndb, "start");
+      });
+    });
   });
 
   describe("version", function() {
