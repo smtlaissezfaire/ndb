@@ -1,4 +1,30 @@
 describe("Option Parsing", function() {
+  describe("opts", function() {
+    it("should have opts as the option parser", function() {
+      var optionParser = ndb.OptionParser.opts;
+      optionParser["parse"].should.not.be_null;
+    });
+  });
+
+  describe("parsing and running", function() {
+    it("should parse the options", function() {
+      var option_parser = ndb.OptionParser;
+      var internalOptParseLibrary = option_parser.opts;
+
+      spy.stub(internalOptParseLibrary, "parse");
+
+      spy.spyOn(internalOptParseLibrary, function() {
+        option_parser.parse();
+
+        spy.intercepted(internalOptParseLibrary, "parse", function(options, arguments, auto_generated_help) {
+          options.should.equal(option_parser.options);
+          arguments.should.equal(true);
+          auto_generated_help.should.equal(true);
+        });
+      });
+    });
+  });
+
   describe("version", function() {
     before_each(function() {
       spy.stub(ndb.Helpers, "exit");
