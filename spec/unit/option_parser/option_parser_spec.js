@@ -1,6 +1,8 @@
 describe("Option Parsing", function() {
   describe("version", function() {
     before_each(function() {
+      spy.stub(ndb.Helpers, "exit");
+
       findShortOption = function(option_name) {
         var result = null;
 
@@ -46,6 +48,14 @@ describe("Option Parsing", function() {
           spy.intercepted(ndb.Helpers, "puts", function(text) {
             text.should.equal("ndb version 0.1.2");
           });
+        });
+      });
+
+      it("should exit after running", function() {
+        spy.spyOn(ndb.Helpers, function() {
+          findLongOption("version").callback();
+
+          spy.intercepted(ndb.Helpers, "exit");
         });
       });
     });
