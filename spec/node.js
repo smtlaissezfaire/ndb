@@ -12,6 +12,10 @@ spy = Espionage;
 JSpec.include({
   beforeSpec: function() {
     spy.tearDown();
+  },
+
+  afterSpec: function() {
+    spy.tearDown();
   }
 });
 
