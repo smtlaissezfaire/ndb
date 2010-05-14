@@ -92,5 +92,33 @@ describe("Option Parsing", function() {
         });
       });
     });
+
+    describe("port", function() {
+      it("should parse -p as port", function() {
+        findShortOption("p").should.not.be_null;
+      });
+
+      it("should parse --port", function() {
+        findLongOption("port").should.not.be_null;
+      });
+
+      it("should have a description", function() {
+        findLongOption("port").description.should.equal("Set the port (default: 5858)");
+      });
+
+      it("should take a value", function() {
+        findLongOption("port").value.should.be(true);
+      });
+
+      it("should set the value when given", function() {
+        findLongOption("port").callback(1000);
+        ndb.port.should.equal(1000);
+      });
+
+      it("should convert the arg to an int", function() {
+        findLongOption("port").callback("1000");
+        ndb.port.should.equal(1000);
+      });
+    });
   });
 });
