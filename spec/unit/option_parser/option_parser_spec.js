@@ -26,13 +26,6 @@ describe("Option Parsing", function() {
       };
     });
 
-    describe("opts", function() {
-      it("should have ndb.Helpers.opts as the option parser", function() {
-        var optionParser = ndb.Helpers.opts;
-        optionParser["parse"].should.not.be_null;
-      });
-    });
-
     describe("version", function() {
       it("should parse -v as version", function() {
         findShortOption("v").should.not.be_null;
