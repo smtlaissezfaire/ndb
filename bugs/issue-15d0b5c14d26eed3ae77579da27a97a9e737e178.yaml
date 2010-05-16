@@ -5,8 +5,8 @@ type: :feature
 component: ndb
 release: 
 reporter: Scott Taylor <scott@railsnewbie.com>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2010-04-14 06:08:41.522552 Z
 references: []
 
@@ -24,3 +24,7 @@ log_events:
   - Scott Taylor <scott@railsnewbie.com>
   - unassigned from release 0.1.2
   - ""
+- - 2010-05-16 08:20:46.534851 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - closed with disposition fixed
+  - See e189c119b61c13f64214ec4d8c49917bb5194e2b
