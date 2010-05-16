@@ -121,6 +121,29 @@ describe("Option Parsing", function() {
       });
     });
 
+    describe("host", function() {
+      it("should parse -h as host", function() {
+        findShortOption("h").should.not.be_null;
+      });
+
+      it("should parse --host", function() {
+        findLongOption("host").should.not.be_null;
+      });
+
+      it("should have a description", function() {
+        findLongOption("host").description.should.equal("Set the host (default: 127.0.0.1)");
+      });
+
+      it("should take a value", function() {
+        findLongOption("host").value.should.be(true);
+      });
+
+      it("should set the value when given", function() {
+        findLongOption("host").callback("example.com");
+        ndb.host.should.equal("example.com");
+      });
+    });
+
     describe("verbose", function() {
       it("should parse --verbose", function() {
         findLongOption("verbose").should.not.be_null;
