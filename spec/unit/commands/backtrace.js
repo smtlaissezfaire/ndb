@@ -38,6 +38,42 @@ describe("NodeDebugger", function() {
           });
         });
       });
+
+      describe("outputting the backtrace", function() {
+        before_each(function() {
+          fs = require("fs");
+          file = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one.js");
+          json = JSON.parse(file);
+        });
+
+        it("should have the calling module", function() {
+          backtrace.calling_module.should.equal(ndb);
+        });
+
+        it("should output the stacktrace", function() {
+          output = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one_output.txt");
+
+          spy.spyOn(node_debugger.Helpers, function() {
+            backtrace.output(json);
+
+            spy.intercepted(node_debugger.Helpers, "puts", function(str) {
+              output.length.should.equal(str.length);
+              output.should.equal(str);
+            });
+          });
+        });
+      });
+
+      describe("recognizing the response", function() {
+        it("should return itself if the command is a backtrace command", function() {
+          var obj = {command: 'backtrace'};
+          backtrace.parseResponse(obj).should.equal(backtrace);
+        });
+
+        it("should return undefined if it does not match a backtrace command", function() {
+          backtrace.parseResponse({command: 'foobar'}).should.not.equal(backtrace);
+        });
+      });
     });
   });
 });
