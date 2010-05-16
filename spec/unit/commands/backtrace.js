@@ -47,7 +47,7 @@ describe("NodeDebugger", function() {
         });
 
         it("should have the calling module", function() {
-          backtrace.calling_module.should.equal(ndb);
+          backtrace.callingModule.should.equal(ndb);
         });
 
         it("should output the stacktrace", function() {
