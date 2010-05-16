@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: wait for remote host to be up
+desc: When booting, we should have the main loop wait for the remote end to come up - not fail immediately if it isn't.
+type: :feature
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-05-16 21:13:19.798821 Z
+references: []
+
+id: a137797b955bbb73a14bb820581396d077a15c36
+log_events: 
+- - 2010-05-16 21:13:20.766635 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
