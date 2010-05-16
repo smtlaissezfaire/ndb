@@ -33,20 +33,19 @@ describe('NodeDebugger', function() {
         text.search(/ndb> /).should.not.equal(-1);
       });
 
-      it("should have the default port as 5858", function() {
-        ndb.port.should.equal(5858);
-      });
+      it("should establish the connection on port 5858 and 127.0.0.1", function() {
+        var port_received = null,
+            host_received = null;
 
-      it("should establish the connection on port 5858", function() {
-        var port_received = null;
-
-        tcp.createConnection = function(port) {
+        tcp.createConnection = function(port, host) {
           port_received = port;
+          host_received = host;
           return connection;
         };
 
         ndb.start();
         port_received.should.equal(5858);
+        host_received.should.equal("127.0.0.1");
       });
 
       it("should establish the connection on the correct port", function() {

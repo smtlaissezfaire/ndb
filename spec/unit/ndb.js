@@ -9,4 +9,12 @@ describe("Node Debugger", function() {
     ndb.reset();
     ndb.verbose.should.equal(false);
   });
+
+  it("should have the host set to 127.0.0.1 by default", function() {
+    ndb.host.should.equal("127.0.0.1");
+  });
+
+  it("should have the default port as 5858", function() {
+    ndb.port.should.equal(5858);
+  });
 });
