@@ -144,6 +144,68 @@ describe("Option Parsing", function() {
       });
     });
 
+    describe("local", function() {
+      before_each(function() {
+        childProcess = ndb.Helpers.childProcess;
+        spy.stub(childProcess, "spawn");
+        spy.stub(ndb.Helpers, "puts");
+      });
+
+      it("should have ndb.Helpers.childProcess as child_process provided by node", function() {
+        ndb.Helpers.childProcess.should.equal(require("child_process"));
+      });
+
+      it("should parse -l as local", function() {
+        findShortOption("l").should.not.be_null;
+      });
+
+      it("should parse --local", function() {
+        findLongOption("local").should.not.be_null;
+      });
+
+      it("should have a description", function() {
+        findLongOption("local").description.should.equal("Shortcut for running $(node --debug-brk <myscript> &; ndb) locally.");
+      });
+
+      it("should require a value", function() {
+        findLongOption("local").value.should.be(true);
+      });
+
+      it("should shell out to start the script", function() {
+        spy.spyOn(childProcess, function() {
+          findLongOption("local").callback("tmp.js");
+
+          spy.intercepted(childProcess, "spawn", function(name, args) {
+            name.should.equal("$(which node)");
+            args[0].should.equal("--debug-brk");
+            args[1].should.equal("tmp.js");
+          });
+        });
+      });
+
+      it("should use the correct script name when shelling out", function() {
+        spy.spyOn(childProcess, function() {
+          findLongOption("local").callback("foobar.js");
+
+          spy.intercepted(childProcess, "spawn", function(name, args) {
+            name.should.equal("$(which node)");
+            args[0].should.equal("--debug-brk");
+            args[1].should.equal("foobar.js");
+          });
+        });
+      });
+
+      it("should display the shell command to STDOUT", function() {
+        spy.spyOn(ndb.Helpers, function() {
+          findLongOption("local").callback("tmp.js");
+
+          spy.intercepted(ndb.Helpers, "puts", function(text) {
+            text.should.equal("Spawning process: `$(which node) --debug-brk tmp.js`");
+          });
+        });
+      });
+    });
+
     describe("verbose", function() {
       it("should parse --verbose", function() {
         findLongOption("verbose").should.not.be_null;
