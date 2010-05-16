@@ -6,7 +6,7 @@ desc: |-
   Run this as a little 'shell script', invoking the script with node --debug-brk foo.js, and then invoking the debugger
 type: :feature
 component: ndb
-release: 
+release: 0.1.4
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :closed
 disposition: :fixed
@@ -30,4 +30,8 @@ log_events:
 - - 2010-05-16 22:43:55.923167 Z
   - Scott Taylor <scott@railsnewbie.com>
   - closed with disposition fixed
+  - ""
+- - 2010-05-16 22:49:50.270165 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.1.4 from unassigned
   - ""

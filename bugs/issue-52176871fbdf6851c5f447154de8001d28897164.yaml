@@ -3,7 +3,7 @@ title: set host
 desc: host should default to localhost, but be settable with --host <hostname/ip>
 type: :feature
 component: ndb
-release: 
+release: 0.1.4
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :closed
 disposition: :fixed
@@ -19,4 +19,8 @@ log_events:
 - - 2010-05-16 19:16:37.592342 Z
   - Scott Taylor <scott@railsnewbie.com>
   - closed with disposition fixed
+  - ""
+- - 2010-05-16 22:50:19.957607 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.1.4 from unassigned
   - ""
