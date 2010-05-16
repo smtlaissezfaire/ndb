@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+;
 
 require.paths.unshift(__dirname + "/../lib");
 
