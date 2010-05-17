@@ -113,6 +113,24 @@ describe("NodeDebugger", function() {
         var parse = command_center.parse("s");
         parse[0].should.equal(ndb.Commands.StepIn);
       });
+
+      it("should parse 'repl'", function() {
+        var parse = command_center.parse("repl");
+        parse[0].should.equal(ndb.Commands.REPL);
+      });
+    });
+
+    describe("stdinListener", function() {
+      it("should not run if ndb.State.replOn = true", function() {
+        ndb.State.replOn = true;
+
+        spy.stub(command_center, "parse", function() {
+          false.should.equal(true);
+        });
+
+        command_center.stdinListener("foo");
+        true.should.equal(true);
+      });
     });
 
     describe("loop", function() {

@@ -64,6 +64,21 @@ describe("NodeDebugger", function() {
       text.search(/ndb\> /).should.not.equal(-1);
     });
 
+    it("should output the eval repl text after the parse is successful and is a command that is recognized", function() {
+      ndb.State.replOn = true;
+
+      var json = '{"seq":117,"type":"event","event":"break","body":{"functionName":"f","sourceLine":0,"sourceColumn":14}}';
+
+      var text = "";
+      ndb.Helpers.print = function(t) {
+        text += t;
+      };
+
+      ndb.verbose = true;
+      event_listner.receive(SpecHelpers.makeResponse(json));
+      text.search(/repl\> /).should.not.equal(-1);
+    });
+
     describe("handling the content-length", function() {
       it("should reset the buffer to the empty string when Content-Length: 0", function() {
         var message = "";

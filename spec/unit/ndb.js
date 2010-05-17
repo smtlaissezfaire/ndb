@@ -17,17 +17,22 @@ describe("Node Debugger", function() {
   it("should have the default port as 5858", function() {
     ndb.port.should.equal(5858);
   });
-  
+
   it("should keep the same values after multiple requires", function() {
     ndb = require("ndb");
-    ndb.replOn = false;
-    
+    ndb.replOn = true;
+
     ndb = require("ndb");
-    ndb.replOn.should.equal(false);
+    ndb.replOn.should.equal(true);
   });
 
   it("should be able to call the setup method multiple times", function() {
     ndb.setup();
     ndb.setup();
+  });
+
+  it("should have replOn = false by default", function() {
+    ndb.reset();
+    ndb.State.replOn.should.equal(false);
   });
 });
