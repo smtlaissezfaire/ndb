@@ -176,7 +176,7 @@ describe("Option Parsing", function() {
           findLongOption("local").callback("tmp.js");
 
           spy.intercepted(childProcess, "spawn", function(name, args) {
-            name.should.equal("$(which node)");
+            name.should.equal("node");
             args[0].should.equal("--debug-brk");
             args[1].should.equal("tmp.js");
           });
@@ -188,7 +188,7 @@ describe("Option Parsing", function() {
           findLongOption("local").callback("foobar.js");
 
           spy.intercepted(childProcess, "spawn", function(name, args) {
-            name.should.equal("$(which node)");
+            name.should.equal("node");
             args[0].should.equal("--debug-brk");
             args[1].should.equal("foobar.js");
           });
@@ -200,7 +200,7 @@ describe("Option Parsing", function() {
           findLongOption("local").callback("tmp.js");
 
           spy.intercepted(ndb.Helpers, "puts", function(text) {
-            text.should.equal("Spawning process: `$(which node) --debug-brk tmp.js`");
+            text.should.equal("Spawning process: `node --debug-brk tmp.js`");
           });
         });
       });
