@@ -3,7 +3,7 @@ describe("NodeDebugger", function() {
     describe("verbose", function() {
       before_each(function() {
         verbose = ndb.Commands.Verbose;
-        node_debugger = verbose.callingModule;
+        node_debugger = verbose.ndb;
       });
 
       describe("parsing", function() {

@@ -71,9 +71,9 @@ describe("NodeDebugger", function() {
       it("should write to the log before writing out", function() {
         var called = false;
 
-        raw_write.callingModule.verbose = true;
+        raw_write.ndb.verbose = true;
 
-        raw_write.callingModule.Helpers.log = function() {
+        raw_write.ndb.Helpers.log = function() {
           called = true;
         };
 
@@ -84,9 +84,9 @@ describe("NodeDebugger", function() {
       it("should not write to the log when its turned off", function() {
         var called = false;
 
-        raw_write.callingModule.verbose = false;
+        raw_write.ndb.verbose = false;
 
-        raw_write.callingModule.Helpers.log = function() {
+        raw_write.ndb.Helpers.log = function() {
           called = true;
         };
 
