@@ -1,19 +1,29 @@
 
 # ndb - the node debugger
 
-A command line node.js/v8 debugger.  It still in alpha;
-don't expect all of your favorite debugger commands to
-work quite as expected.
+A command line node.js/v8 debugger.  It still in beta.
 
 ## Usage:
 
 ### Starting it up:
 
-    $ node --debug-brk my_js.js
+    $ node --debug-brk my_js.js &
     debugger listening on port 5858
     Waiting for remote debugger connection...
 
     $ ./bin/ndb
+
+  A convenience method that does the same thing:
+
+    $ ./bin/ndb --local my_js.js
+
+  If you are running a server, you'll probably want to insert a debug
+  statement in your code, and start the debugger like so:
+
+    $ node --debug my_js.js &
+    $ ./bin/ndb
+
+  See --help for more command options.
 
 ### An example session:
 
