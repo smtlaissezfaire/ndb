@@ -150,6 +150,12 @@ Check the node compatibility page:
 
 http://wiki.github.com/ry/node/library-compatibility
 
+## Questions, bugs, patches:
+
+Post it to the mailing list:
+
+http://groups.google.com/group/nodejsdebugger
+
 ## License
 
     ndb - the node.js command line debugger
