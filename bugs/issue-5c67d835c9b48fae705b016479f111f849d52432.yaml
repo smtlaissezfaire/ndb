@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: add npm package
+desc: Add an npm package for increased distribution
+type: :task
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-05-20 06:41:53.969460 Z
+references: []
+
+id: 5c67d835c9b48fae705b016479f111f849d52432
+log_events: 
+- - 2010-05-20 06:41:54.856924 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
