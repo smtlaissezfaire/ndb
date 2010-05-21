@@ -3,7 +3,7 @@ title: add history tracking
 desc: track history per session with "history"
 type: :feature
 component: ndb
-release: 
+release: 0.1.5
 reporter: .
 status: :closed
 disposition: :fixed
@@ -19,4 +19,8 @@ log_events:
 - - 2010-05-21 05:51:54.522400 Z
   - Scott Taylor <scott@railsnewbie.com>
   - closed with disposition fixed
+  - ""
+- - 2010-05-21 05:54:37.577515 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.1.5 from unassigned
   - ""
