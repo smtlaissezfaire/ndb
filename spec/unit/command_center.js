@@ -58,6 +58,10 @@ describe("NodeDebugger", function() {
         command_center.parse("b")[0].should.equal(ndb.Commands.SetBreakpoint);
       });
 
+      it("should parse 'history' as the history command", function() {
+        command_center.parse("history")[0].should.equal(ndb.Commands.History);
+      });
+
       it("should parse 'break' as a break command", function() {
         var result = command_center.parse("break");
 
@@ -143,7 +147,7 @@ describe("NodeDebugger", function() {
       it("should set the encoding of stdin to ascii", function() {
         command_center.loop();
         encoding_set_to.should.equal("ascii");
-      })
+      });
 
       describe("storing a command", function() {
         it('should have the last command as null if no commands have been run', function() {
