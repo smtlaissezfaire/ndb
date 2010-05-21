@@ -39,6 +39,7 @@ JSpec.
   exec('spec/unit/commands/next.js').
   exec('spec/unit/commands/verbose.js').
   exec('spec/unit/commands/backtrace.js').
+  exec('spec/unit/commands/history.js').
   exec('spec/unit/message_parser.js').
   exec('spec/unit/state.js').
   exec('spec/unit/option_parser/option_parser_spec.js').
