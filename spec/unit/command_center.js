@@ -150,6 +150,27 @@ describe("NodeDebugger", function() {
       });
 
       describe("storing a command", function() {
+        describe("storing all the commands", function() {
+          it("should have no commands initially", function() {
+            ndb.State.history.length.should.equal(0);
+          });
+
+          it('should store a command in the history', function() {
+            command_center.parse("c");
+            ndb.State.history.length.should.equal(1);
+            ndb.State.history[0].should.equal("c");
+          });
+
+          it("should store several commands in the history", function() {
+            command_center.parse("list");
+            command_center.parse("continue");
+
+            ndb.State.history.length.should.equal(2);
+            ndb.State.history[0].should.equal("list");
+            ndb.State.history[1].should.equal("continue");
+          });
+        });
+
         it('should have the last command as null if no commands have been run', function() {
           command_center.lastCommand.should.equal(null);
         });
