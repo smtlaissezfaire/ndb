@@ -1,3 +1,21 @@
+== 0.1.5 / 2010-05-30
+* add history tracking
+  ndb> history
+      1  list
+      2  n
+      3  history
+
+* repl
+
+  ndb> repl
+  Welcome to the ndb repl.
+  Type .break to exit.
+  repl> this
+  => #<an Object>
+  repl> 1+1
+  => 2
+  repl> .break
+
 == 0.1.4 / 2010-05-20
 * Implement backtrace command.
 * set host with --host

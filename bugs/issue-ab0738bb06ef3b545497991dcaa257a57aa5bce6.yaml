@@ -3,7 +3,7 @@ title: repl
 desc: It would be really nice to have a repl
 type: :feature
 component: ndb
-release: 
+release: 0.1.5
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :closed
 disposition: :fixed
@@ -19,4 +19,8 @@ log_events:
 - - 2010-05-30 05:17:23.031295 Z
   - Scott Taylor <scott@railsnewbie.com>
   - closed with disposition fixed
+  - ""
+- - 2010-05-30 06:07:34.582341 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.1.5 from unassigned
   - ""
