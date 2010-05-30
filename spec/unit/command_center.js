@@ -114,6 +114,16 @@ describe("NodeDebugger", function() {
         parse[0].should.equal(ndb.Commands.StepIn);
       });
 
+      it("should parse 'so' as a step out command", function() {
+        var parse = command_center.parse("so");
+        parse[0].should.equal(ndb.Commands.StepOut);
+      });
+
+      it("should parse 'stepout' as a step out command", function() {
+        var parse = command_center.parse("stepout");
+        parse[0].should.equal(ndb.Commands.StepOut);
+      });
+
       it("should parse 'repl'", function() {
         var parse = command_center.parse("repl");
         parse[0].should.equal(ndb.Commands.REPL);
