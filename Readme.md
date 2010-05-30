@@ -1,7 +1,7 @@
 
 # ndb - the node debugger
 
-A command line node.js/v8 debugger.  It still in beta.
+A command line node.js/v8 debugger.  It is still in beta, but perfectly usable.
 
 ## Usage:
 
@@ -142,7 +142,7 @@ A command line node.js/v8 debugger.  It still in beta.
 ## Running Unit tests:
 
     git submodule update --init
-    node spec/node.js
+    make test
 
 ## Node version:
 
