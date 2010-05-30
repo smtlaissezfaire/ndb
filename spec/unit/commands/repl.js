@@ -12,9 +12,13 @@ describe("ndb", function() {
         repl.commandNames[0].should.equal('repl');
       });
 
-      it("should output a prompt", function() {
+      it("should output a prompt + help text", function() {
         spy.spyOn(ndb.Helpers, function() {
           repl.run();
+
+          spy.intercepted(ndb.Helpers, "puts", function(text) {
+            text.should.equal("Welcome to the ndb repl.\nType .break to exit.");
+          });
 
           spy.intercepted(ndb.Helpers, "print", function(text) {
             text.should.equal("repl> ");
