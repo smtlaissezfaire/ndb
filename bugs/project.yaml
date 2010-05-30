@@ -57,3 +57,12 @@ releases:
     - Scott Taylor <scott@railsnewbie.com>
     - released
     - ""
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: 0.1.6
+  status: :unreleased
+  release_time: 
+  log_events: 
+  - - 2010-05-30 07:14:37.440484 Z
+    - Scott Taylor <scott@railsnewbie.com>
+    - created
+    - ""
