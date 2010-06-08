@@ -42,7 +42,7 @@ describe("NodeDebugger", function() {
       describe("outputting the backtrace", function() {
         before_each(function() {
           fs = require("fs");
-          file = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one.js");
+          file = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one.js", "ascii");
           json = JSON.parse(file);
         });
 
@@ -51,7 +51,7 @@ describe("NodeDebugger", function() {
         });
 
         it("should output the stacktrace", function() {
-          output = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one_output.txt");
+          output = fs.readFileSync(__dirname + "/../../fixtures/backtrace_one_output.txt", "ascii");
 
           spy.spyOn(node_debugger.Helpers, function() {
             backtrace.output(json);
