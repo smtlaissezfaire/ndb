@@ -13,3 +13,6 @@
 [submodule "doc/website/dependencies/jm"]
 	path = doc/website/dependencies/jm
 	url = git@github.com:smtlaissezfaire/jm.git
+[submodule "doc/website/dependencies/express"]
+	path = doc/website/dependencies/express
+	url = http://github.com/visionmedia/express.git
