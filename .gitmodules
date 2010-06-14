@@ -10,3 +10,6 @@
 [submodule "spec/jspec_dot_reporter"]
 	path = spec/jspec_dot_reporter
 	url = git@github.com:smtlaissezfaire/jspec_dot_reporter.git
+[submodule "doc/website/dependencies/jm"]
+	path = doc/website/dependencies/jm
+	url = git@github.com:smtlaissezfaire/jm.git
