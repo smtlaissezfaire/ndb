@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: improve eval / repl documentation
+desc: ""
+type: :task
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2010-06-14 00:47:48.585771 Z
+references: []
+
+id: 635e4198746203d63c2776ea69447a70393d2467
+log_events: 
+- - 2010-06-14 00:47:49.401431 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
