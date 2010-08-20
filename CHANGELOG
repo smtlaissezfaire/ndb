@@ -1,3 +1,7 @@
+== 0.2.0 / 2010-08-20
+* bugfix: Compatibility with node v0.1.97 / v0.2.0.
+* add stepout functionality
+
 == 0.1.5 / 2010-05-30
 * add history tracking
   ndb> history
