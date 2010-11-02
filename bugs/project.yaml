@@ -70,3 +70,16 @@ releases:
     - Scott Taylor <scott@railsnewbie.com>
     - released
     - ""
+- !ditz.rubyforge.org,2008-03-06/release 
+  name: 0.2.1
+  status: :released
+  release_time: 2010-11-02 07:11:07.604460 Z
+  log_events: 
+  - - 2010-11-02 07:10:42.277425 Z
+    - Scott Taylor <scott@railsnewbie.com>
+    - created
+    - Add node 0.3.0 support
+  - - 2010-11-02 07:11:07.604473 Z
+    - Scott Taylor <scott@railsnewbie.com>
+    - released
+    - ""
