@@ -99,7 +99,7 @@ describe("NodeDebugger", function() {
 
         // verbose: >>> Content-Length: 132
         // verbose: >>>
-        // verbose: >>> {"type":"request","command":"evaluate","arguments":{"expression":"try { require('sys').inspect(require); } catch (_) { require }"}}
+        // verbose: >>> {"type":"request","command":"evaluate","arguments":{"expression":"try { require('util').inspect(require); } catch (_) { require }"}}
         // verbose: >>>
         // verbose: <<< Content-Length: 132
         // verbose: <<<
