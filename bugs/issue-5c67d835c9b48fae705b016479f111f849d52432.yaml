@@ -3,7 +3,7 @@ title: add npm package
 desc: Add an npm package for increased distribution
 type: :task
 component: ndb
-release: 
+release: 0.2.2
 reporter: Scott Taylor <scott@railsnewbie.com>
 status: :closed
 disposition: :fixed
@@ -19,4 +19,8 @@ log_events:
 - - 2010-11-23 23:16:41.941110 Z
   - Scott Taylor <scott@railsnewbie.com>
   - closed with disposition fixed
+  - ""
+- - 2010-11-23 23:25:12.788618 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - assigned to release 0.2.2 from unassigned
   - ""
