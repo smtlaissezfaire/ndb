@@ -79,7 +79,7 @@ describe("Option Parsing", function() {
           findLongOption("version").callback();
 
           spy.intercepted(ndb.Helpers, "puts", function(text) {
-            text.should.equal("ndb version 0.2.1");
+            text.should.equal("ndb version 0.2.3");
           });
         });
       });
