@@ -34,5 +34,14 @@ describe("NodeDebugger", function() {
         version.parseCommand("foo").should.equal(undefined);
       });
     });
+    
+    describe("package.json version", function() {
+      it("should have the correct version", function() {
+        var file_contents = require("fs").readFileSync("./package.json", 'ascii');
+        var data = JSON.parse(file_contents);
+        
+        data["version"].should.equal("0.2.1");
+      });
+    });
   });
 });
