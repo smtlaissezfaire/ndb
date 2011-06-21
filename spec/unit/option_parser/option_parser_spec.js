@@ -18,7 +18,7 @@ describe("Option Parsing", function() {
 
         spy.intercepted(internalOptParseLibrary, "parse", function(options, arguments, auto_generated_help) {
           options.should.equal(option_parser.options);
-          arguments.should.equal(true);
+          arguments.length.should == 0;
           auto_generated_help.should.equal(true);
         });
       });
