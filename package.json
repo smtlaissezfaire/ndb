@@ -1,7 +1,7 @@
 {
   "name":     "ndb",
   "author":   "Scott Taylor <scott@railsnewbie.com> (http://blog.railsnewbie.com/)",
-  "version":  "0.2.3",
+  "version":  "0.2.4",
   "bin":      "./bin/ndb",
   "main":     "./lib/ndb.js",
   "directories": {

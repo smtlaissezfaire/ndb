@@ -1,7 +1,7 @@
 describe("Node Debugger", function() {
   describe("version", function() {
-    it("should be at 0.2.3", function() {
-      ndb.version.should.equal("0.2.3");
+    it("should be at 0.2.4", function() {
+      ndb.version.should.equal("0.2.4");
     });
   });
 

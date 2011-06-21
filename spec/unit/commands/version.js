@@ -17,7 +17,7 @@ describe("NodeDebugger", function() {
 
       it("should output the ndb + node version", function() {
         version.run();
-        puts_called_with[0].should.equal("ndb:          version 0.2.3");
+        puts_called_with[0].should.equal("ndb:          version 0.2.4");
         puts_called_with[1].should.equal("node (local): version " + process.version);
       });
 
@@ -34,13 +34,13 @@ describe("NodeDebugger", function() {
         version.parseCommand("foo").should.equal(undefined);
       });
     });
-    
+
     describe("package.json version", function() {
       it("should have the correct version", function() {
         var file_contents = require("fs").readFileSync("./package.json", 'ascii');
         var data = JSON.parse(file_contents);
-        
-        data["version"].should.equal("0.2.3");
+
+        data["version"].should.equal("0.2.4");
       });
     });
   });
