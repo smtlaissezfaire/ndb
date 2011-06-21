@@ -1,3 +1,6 @@
+== 0.2.4 / 2011-06-21
+* Tiny release to fix bug with call to option parser
+
 == 0.2.3 / 2010-11-24
 * minor release to fix version info
 
