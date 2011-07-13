@@ -59,6 +59,7 @@ describe("NodeDebugger", function() {
         text += t;
       };
 
+      ndb.silent  = false;
       ndb.verbose = true;
       event_listner.receive(SpecHelpers.makeResponse(json));
       text.search(/ndb\> /).should.not.equal(-1);

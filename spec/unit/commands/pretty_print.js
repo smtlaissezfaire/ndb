@@ -12,7 +12,6 @@ describe("NodeDebugger", function() {
       it("should have the same commands as evaluate", function() {
         pretty_printer.ndb.should.equal(evaluator.ndb);
         pretty_printer.parseCommand.should.equal(evaluator.parseCommand);
-        pretty_printer.parseResponse.should.equal(evaluator.parseResponse);
         pretty_printer.output.should.equal(evaluator.output);
       });
 
@@ -30,7 +29,7 @@ describe("NodeDebugger", function() {
             spy.intercepted(raw_write, "run", function(obj) {
               obj.type.should.equal("request");
               obj.command.should.equal("evaluate");
-              obj.arguments.expression.should.equal("global.___ndb_require(\"util\").inspect(\"1+2\")");
+              obj.arguments.expression.should.equal("global.___ndb_require(\"util\").inspect(1+2)");
             });
           });
         });
@@ -40,7 +39,7 @@ describe("NodeDebugger", function() {
             pretty_printer.run("a()", true);
 
             spy.intercepted(raw_write, "run", function(obj) {
-              obj.arguments.expression.should.equal("global.___ndb_require(\"util\").inspect(\"a()\")");
+              obj.arguments.expression.should.equal("global.___ndb_require(\"util\").inspect(a())");
             });
           });
         });
