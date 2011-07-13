@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: npm installation instructions
+desc: Add installation instructsions under npm
+type: :feature
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-07-13 04:55:42.148190 Z
+references: []
+
+id: 5fbcdbfeba79956cb6c72432aab7f974978db603
+log_events: 
+- - 2011-07-13 04:55:44.356213 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
