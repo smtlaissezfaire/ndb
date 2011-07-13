@@ -5,6 +5,12 @@ A command line node.js/v8 debugger.  It is still in beta, but perfectly usable.
 
 ## Usage:
 
+### Installation
+
+Install via npm (globally):
+
+    $ npm install ndb -g
+
 ### Starting it up:
 
     $ node --debug-brk my_js.js &
