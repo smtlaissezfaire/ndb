@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: l+, l- should work
+desc: l+ should take you forward 10 lines, l- should take you back 10 lines
+type: :feature
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-07-13 05:11:15.195939 Z
+references: []
+
+id: 5d97eebb7738cc10564d1ece259d9fff12b1ed7e
+log_events: 
+- - 2011-07-13 05:11:16.251885 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""

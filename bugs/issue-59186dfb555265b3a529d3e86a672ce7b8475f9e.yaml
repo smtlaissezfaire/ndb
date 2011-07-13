@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Use q, quit, and exit for exiting
+desc: Use the commands listed above to exit
+type: :feature
+component: ndb
+release: 
+reporter: Scott Taylor <scott@railsnewbie.com>
+status: :unstarted
+disposition: 
+creation_time: 2011-07-13 05:10:37.632021 Z
+references: []
+
+id: 59186dfb555265b3a529d3e86a672ce7b8475f9e
+log_events: 
+- - 2011-07-13 05:10:38.848019 Z
+  - Scott Taylor <scott@railsnewbie.com>
+  - created
+  - ""
