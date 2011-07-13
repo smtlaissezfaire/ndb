@@ -149,9 +149,9 @@ Install via npm (globally):
 
 If you want readline completion, you'll probably want to alias ndb to use rlwrap:
 
-  $ which ndb
-  /Users/scotttaylor/.nvm/v0.4.9/bin/ndb
-  $ alias ndb="rlwrap /Users/scotttaylor/.nvm/v0.4.9/bin/ndb"
+    $ which ndb
+    /Users/scotttaylor/.nvm/v0.4.9/bin/ndb
+    $ alias ndb="rlwrap /Users/scotttaylor/.nvm/v0.4.9/bin/ndb"
 
 
 ## Running Unit tests:
