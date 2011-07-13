@@ -39,26 +39,6 @@ describe("NodeDebugger", function() {
             });
           });
         });
-
-        it("should inspect when given a false arg", function() {
-          spy.spyOn(raw_write, function() {
-            evaluator.run("a()", false);
-
-            spy.intercepted(raw_write, "run", function(obj) {
-              obj.arguments.expression.should.equal(evaluator.__testing.construct_expression("a()"));
-            });
-          });
-        });
-
-        it("should inspect when given no second arg", function() {
-          spy.spyOn(raw_write, function() {
-            evaluator.run("a()");
-
-            spy.intercepted(raw_write, "run", function(obj) {
-              obj.arguments.expression.should.equal(evaluator.__testing.construct_expression("a()"));
-            });
-          });
-        });
       });
 
       // verbose: >>> Content-Length: 73
