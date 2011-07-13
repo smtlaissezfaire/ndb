@@ -160,6 +160,16 @@ describe("NodeDebugger", function() {
         var parse = command_center.parse("pp 1+1");
         parse[0].should.equal(ndb.Commands.PrettyPrint);
       });
+
+      it("should parse 'quit' as the quit command", function() {
+        var parse = command_center.parse("quit");
+        parse[0].should.equal(ndb.Commands.Quit);
+      });
+
+      it("should parse 'exit' as the quit command", function() {
+        var parse = command_center.parse("quit");
+        parse[0].should.equal(ndb.Commands.Quit);
+      });
     });
 
     describe("stdinListener", function() {
