@@ -37,6 +37,7 @@ JSpec.
   exec('spec/unit/commands/quit.js').
   exec('spec/unit/commands/version.js').
   exec('spec/unit/commands/evaluate.js').
+  exec('spec/unit/commands/pretty_print.js').
   exec('spec/unit/commands/next.js').
   exec('spec/unit/commands/verbose.js').
   exec('spec/unit/commands/backtrace.js').

@@ -3,6 +3,8 @@ describe("NodeDebugger", function() {
     before_each(function() {
       command_center          = ndb.CommandCenter;
       command_center.commands = ndb.Commands;
+      
+      spy.stub(ndb.Commands.Evaluate, "run");
     });
 
     describe("parsing", function() {
@@ -127,6 +129,36 @@ describe("NodeDebugger", function() {
       it("should parse 'repl'", function() {
         var parse = command_center.parse("repl");
         parse[0].should.equal(ndb.Commands.REPL);
+      });
+
+      it("should parse 'eval' with an argument as the eval command", function() {
+        var parse = command_center.parse("eval 1+1");
+        parse[0].should.equal(ndb.Commands.Evaluate);
+      });
+
+      it("should parse 'e' with an argument as the eval command", function() {
+        var parse = command_center.parse("e 1+1");
+        parse[0].should.equal(ndb.Commands.Evaluate);
+      });
+
+      it("should parse 'p' with an argument as the eval command", function() {
+        var parse = command_center.parse("p 1+1");
+        parse[0].should.equal(ndb.Commands.Evaluate);
+      });
+
+      it("should parse 'print' with an argument as the eval command", function() {
+        var parse = command_center.parse("print 1+1");
+        parse[0].should.equal(ndb.Commands.Evaluate);
+      });
+
+      it("should parse 'prettyprint' with an argument as the eval command", function() {
+        var parse = command_center.parse("prettyprint 1+1");
+        parse[0].should.equal(ndb.Commands.PrettyPrint);
+      });
+
+      it("should parse 'pp' with an argument as the eval command", function() {
+        var parse = command_center.parse("pp 1+1");
+        parse[0].should.equal(ndb.Commands.PrettyPrint);
       });
     });
 
