@@ -5,7 +5,7 @@ A command line node.js/v8 debugger.  It is still in beta, but perfectly usable.
 
 # NOT MAINTAINED
 
-This project is no longer being maintained.  Use the built in debugger in versions of node >= 0.4x.
+This project is no longer being maintained.  Use the built in debugger in versions of node >= 0.4.x.
 
 If there are features that you are relying on in ndb that aren't present in the built in debugger, I'd be happy to port them to the mainline debugger; just file a ticket in this project.
 
